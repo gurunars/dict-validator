@@ -291,6 +291,15 @@ def serialize(schema, value):
     >>> pprint(serialize(Parent, payload))
     {'child': {'items': ['SERIALIZED OUTGOING']},
      'plain_field': 'SERIALIZED OUTGOING'}
+
+    When serializing optional fields the missing values are set to None.
+
+    >>> class Schema:
+    ...     field = AnyValueField(required=False)
+
+    >>> serialize(Schema, {})
+    {'field': None}
+
     """
     return _wrap_schema(schema).serialize(value)
 
@@ -347,6 +356,13 @@ def deserialize(schema, value):
 
     >>> parent.child.items[0]
     'DESERIALIZED INCOMING'
+
+    When deserializing optional fields the missing values are set to None.
+
+    >>> class Schema:
+    ...     field = AnyValueField(required=False)
+
+    >>> deserialize(Schema, {}).field
 
     """
     return _wrap_schema(schema).deserialize(value)

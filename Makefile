@@ -1,16 +1,13 @@
 test:
-	pep8 dict_validator
-	pyflakes dict_validator
-	./custom_pylint.py --rcfile=dict_validator/.pylintrc dict_validator
-	nosetests
+	./build-scripts/test.sh
 
 docs:
-	./build_docs.sh
+	./build-scripts/build_docs.sh
 
 publish-docs: docs
-	./publish_docs.sh
+	./build-scripts/publish_docs.sh
 
 publish: test publish-docs
-	python setup.py sdist bdist_wheel upload -r pypi
+	python setup.py sdist upload -r pypi
 
 .PHONY: test publish docs publish-docs

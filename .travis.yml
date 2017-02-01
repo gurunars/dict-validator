@@ -2,8 +2,8 @@ language: python
 python:
 - '2.7'
 install:
-  - pip install -r build-requirements.txt
-script: make test
+- pip install -r build-requirements.txt
+script: make test publish-docs
 sudo: false
 branches:
   only:
@@ -14,7 +14,4 @@ deploy:
   on:
     branch: master
   password:
-    secure: V6SnUvJVDBCCbcHT+t0NjZA7PrgaZNMjP0BYsFS4xid+U0RX+g/MpdcHJK/NWK/ZqY6EdmCQLbQn/M79UhIHTllta2wLrnUa7YkqjVkUkdGkjf9/Ki2PDS607mmGZxYZ4qIOCt6yS590iSoh/QZ6Gykc6LVkO3aZx8C64H+YIig=
-after_deploy:
-  - ./build_docs.sh
-  - ./publish_docs.sh true
+    secure: K7CcasMwfpl+kLbBET2fQiW3PL2u9PxFcA3ymGLZ9fEfhvJtEqzJ3Kl17h3ssTo6kwGJZJVfEDyS7LNy3JKtKRT9eDl1cK7lmSeJ5SdIWLC07mvmmhYBnWTAiHou5w5+QnvuxWTsgnyWRygCP+BYtkVuBCNY8oWQmMPtuOeFuD0/Merof+L9j2wSEgLLhHJXDenNNXrKTQUTHrYjXe5DTuF8qcbm6qlX1LlMly/HSl3mdLcdzil0yOLt0/bwNjhJ7oKGw/0tjDvTaZFAz/JF30D44i8YX8zjEjNm35lPW3IEkaHcOnaM0V7sodOQrIBAJesyGi/MdEocWo8J96QDLJvDPkBuM/IYyeb6gAUwIGrtn/Hybvfx7B0PFqqf4yrnoy0p7emDMzgFWz5wzvhu+1hvEqvlOhcmqIDkLqMRpx1pgyQzOif13jJo1CvzFAwDwD1or3iNRMN+TEnpAvZXvUD9Fv0L77l6DpCpx7nY4l1BTmT1k2SGONVbsivc1xMxwNfWBHozZrvHFZQuWfcejjsjRBkRHxdm98TlZaeA/HDOIiIVpqtJUZNMwOLarpzVBDvW9XsFDHbjAaKgLi2YwHFSDyA7gdj1uedVTP3ZXzvIlWmAa7FsrjOnsJM2aG2ElKBOziplS6KkXqFVLkPX2ZMu5Q8ZfiQOX4U24fl09kg=

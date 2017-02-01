@@ -11,6 +11,7 @@ branches:
 deploy:
   provider: pypi
   user: gurunars
+  skip_upload_docs: true
   on:
     branch: master
   password:

@@ -8,6 +8,6 @@ publish-docs: docs
 	./build-scripts/publish_docs.sh
 
 publish: test publish-docs
-	python setup.py sdist upload -r pypi
+	./publish.sh
 
 .PHONY: test publish docs publish-docs

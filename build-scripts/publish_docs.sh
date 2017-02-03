@@ -2,16 +2,18 @@
 
 set -eu
 
-# Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
-ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
-ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
-ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
-ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
-openssl aes-256-cbc -K ${ENCRYPTED_KEY} -iv ${ENCRYPTED_IV} \
-                    -in deploy_key.enc -out deploy_key -d
-chmod 600 deploy_key
-eval $(ssh-agent -s)
-ssh-add deploy_key
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Travis specific
+if [ -f ${DIR}/deploy_key ]; then
+    chmod 600 ${DIR}/deploy_key
+    eval $(ssh-agent -s)
+    ssh-add ${DIR}/deploy_key
+fi
+
+ORIGIN=$(git config remote.origin.url)
+ORIGIN=${ORIGIN/https:\/\/github.com\//git@github.com:}
+ORIGIN=${ORIGIN%/}
 
 NAME=$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 32)
 

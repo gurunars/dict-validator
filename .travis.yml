@@ -3,16 +3,13 @@ python:
 - '2.7'
 install:
 - pip install -r build-requirements.txt
-script: make test publish-docs
+script: make publish
 sudo: false
 branches:
   only:
   - master
-deploy:
-  provider: pypi
-  user: gurunars
-  skip_upload_docs: true
-  on:
-    branch: master
-  password:
-    secure: K7CcasMwfpl+kLbBET2fQiW3PL2u9PxFcA3ymGLZ9fEfhvJtEqzJ3Kl17h3ssTo6kwGJZJVfEDyS7LNy3JKtKRT9eDl1cK7lmSeJ5SdIWLC07mvmmhYBnWTAiHou5w5+QnvuxWTsgnyWRygCP+BYtkVuBCNY8oWQmMPtuOeFuD0/Merof+L9j2wSEgLLhHJXDenNNXrKTQUTHrYjXe5DTuF8qcbm6qlX1LlMly/HSl3mdLcdzil0yOLt0/bwNjhJ7oKGw/0tjDvTaZFAz/JF30D44i8YX8zjEjNm35lPW3IEkaHcOnaM0V7sodOQrIBAJesyGi/MdEocWo8J96QDLJvDPkBuM/IYyeb6gAUwIGrtn/Hybvfx7B0PFqqf4yrnoy0p7emDMzgFWz5wzvhu+1hvEqvlOhcmqIDkLqMRpx1pgyQzOif13jJo1CvzFAwDwD1or3iNRMN+TEnpAvZXvUD9Fv0L77l6DpCpx7nY4l1BTmT1k2SGONVbsivc1xMxwNfWBHozZrvHFZQuWfcejjsjRBkRHxdm98TlZaeA/HDOIiIVpqtJUZNMwOLarpzVBDvW9XsFDHbjAaKgLi2YwHFSDyA7gdj1uedVTP3ZXzvIlWmAa7FsrjOnsJM2aG2ElKBOziplS6KkXqFVLkPX2ZMu5Q8ZfiQOX4U24fl09kg=
+before_install:
+- openssl aes-256-cbc -K $encrypted_94aabc157ce6_key -iv $encrypted_94aabc157ce6_iv
+  -in build-scripts/deploy_key.enc -out build-scripts/deploy_key -d
+- openssl aes-256-cbc -K $encrypted_9cb6e1718829_key -iv $encrypted_9cb6e1718829_iv
+  -in build-scripts/pypirc.enc -out build-scripts/pypirc -d

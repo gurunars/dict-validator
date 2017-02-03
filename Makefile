@@ -8,6 +8,6 @@ publish-docs: docs
 	./build-scripts/publish_docs.sh
 
 publish: test publish-docs
-	./publish.sh
+	./build-scripts/publish.sh
 
 .PHONY: test publish docs publish-docs

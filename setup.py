@@ -1,7 +1,10 @@
 #!/usr/bin/python
 import os
+import sys
 
 from setuptools import setup, find_packages
+
+assert sys.version_info.major < 3, "Only Python 3 is supported"
 
 SRC_DIR = os.path.dirname(__file__)
 CHANGES_FILE = os.path.join(SRC_DIR, "CHANGES")
@@ -19,5 +22,13 @@ setup(
     packages=find_packages(exclude=["test"]),
     author="Anton Berezin",
     author_email="gurunars@gmail.com",
-    include_package_data=True
+    include_package_data=True,
+    license="MIT",
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Developers',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3'
+    ]
 )

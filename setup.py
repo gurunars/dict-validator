@@ -4,7 +4,7 @@ import sys
 
 from setuptools import setup, find_packages
 
-assert sys.version_info.major >= 3, "Only Python 2 is supported"
+assert sys.version_info.major < 3, "Only Python 2 is supported"
 
 SRC_DIR = os.path.dirname(__file__)
 CHANGES_FILE = os.path.join(SRC_DIR, "CHANGES")

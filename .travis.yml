@@ -7,7 +7,7 @@ script: make publish
 sudo: false
 branches:
   only:
-  - master
+  - python2
 before_install:
 - openssl aes-256-cbc -K $encrypted_94aabc157ce6_key -iv $encrypted_94aabc157ce6_iv
   -in build-scripts/deploy_key.enc -out build-scripts/deploy_key -d

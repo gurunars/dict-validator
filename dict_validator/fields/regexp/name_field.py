@@ -26,10 +26,18 @@ class NameField(RegexpField):
     >>> list(validate(Schema, {"field": 'John Smith Äjil'}))
     []
 
-    Only letters are allowed in the name
+    >>> list(validate(Schema, {"field": 'John??Smith!!'}))
+    [(['field'], 'Did not match Regexp(name)')]
+
+    Digits are not allowed
 
     >>> list(validate(Schema, {"field": 'John Smith022'}))
-    [(['field'], "Name can't contain digits")]
+    [(['field'], "Name can't contain digits or underscores")]
+
+    Underscores are not allowed either
+
+    >>> list(validate(Schema, {"field": 'John_Smith'}))
+    [(['field'], "Name can't contain digits or underscores")]
 
     By default each name part must be capitalized
 
@@ -61,4 +69,4 @@ class NameField(RegexpField):
                 if str(word[0]).islower():
                     return "One of the name parts is not capitalized"
         if re.search(r"[0-9_]+", value):
-            return "Name can't contain digits"
+            return "Name can't contain digits or underscores"

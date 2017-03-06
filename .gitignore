@@ -8,5 +8,3 @@ dist
 cover
 *.egg-info
 *.pyc
-.venv3
-.vent2

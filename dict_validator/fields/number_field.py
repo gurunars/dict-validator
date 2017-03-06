@@ -56,7 +56,7 @@ class NumberField(Field):
         self._can_be_float = can_be_float
 
     def _validate(self, value):
-        allowed_types = (int, long)
+        allowed_types = (int, int)
         if self._can_be_float:
             allowed_types += (float,)
 

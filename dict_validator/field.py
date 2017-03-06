@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod, abstractproperty
 
 
-class Field(object):
+class Field(object, metaclass=ABCMeta):
     """
     The "leaf" primitive data type in a schema.
     E.g. string, integer, float, etc.
@@ -26,8 +26,6 @@ class Field(object):
     .. automethod:: _validate
 
     """
-
-    __metaclass__ = ABCMeta
 
     def __init__(self, description=None, required=True):
         self._description = description
@@ -107,7 +105,7 @@ class Field(object):
 
         if result is None:
             return
-        elif isinstance(result, basestring):
+        elif isinstance(result, str):
             yield ([], result)
         else:
             for chunk in result:

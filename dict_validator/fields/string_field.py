@@ -26,5 +26,5 @@ class StringField(Field):
         return "String"
 
     def _validate(self, value):
-        if not isinstance(value, basestring):
+        if not isinstance(value, str):
             return "Not a string"

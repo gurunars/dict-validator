@@ -43,7 +43,7 @@ class DictField(Field):
             for (child_path, error) in subschema.validate(subvalue):
                 yield ([key] + child_path, error)
         if value:
-            yield ([], "Unkown fields: {}".format(", ".join(value.keys())))
+            yield ([], "Unkown fields: {}".format(", ".join(list(value.keys()))))
 
     def describe(self):
         for result in super(DictField, self).describe():

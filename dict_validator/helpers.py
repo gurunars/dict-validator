@@ -4,7 +4,7 @@ from .dict_field import DictField
 
 
 def _wrap_schema(schema):
-    if isinstance(schema, types.ClassType):
+    if isinstance(schema, type):
         return DictField(description=schema.__doc__, schema=schema)
     return schema
 
@@ -218,7 +218,7 @@ def describe(schema):
 
     >>> from pprint import pprint
 
-    >>> pprint(sorted(describe(Parent)), width=70)
+    >>> pprint(sorted(describe(Parent)), width=60)
     [([], {'description': 'Schema docstring', 'type': 'Dict'}),
      (['child'], {'description': 'Dict child', 'type': 'Dict'}),
      (['child', 'items'],

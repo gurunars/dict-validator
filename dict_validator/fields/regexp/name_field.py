@@ -21,10 +21,10 @@ class NameField(RegexpField):
     >>> list(validate(Schema, {"field": 'John Smith'}))
     []
 
-    Only ASCII charset is allowed
+    Regexp values are allowed as well
 
     >>> list(validate(Schema, {"field": 'John Smith Äjil'}))
-    [(['field'], 'Did not match Regexp(name)')]
+    []
 
     Only letters are allowed in the name
 
@@ -58,7 +58,7 @@ class NameField(RegexpField):
             return ret_val
         if not self._lowercase_allowed:
             for word in value.split():
-                if unicode(word[0]).islower():
+                if str(word[0]).islower():
                     return "One of the name parts is not capitalized"
         if re.search(r"[0-9_]+", value):
             return "Name can't contain digits"

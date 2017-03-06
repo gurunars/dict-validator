@@ -125,7 +125,7 @@ class WildcardDictField(Field):
         if not isinstance(value, dict):
             yield "Not a dict"
             return
-        for key, payload in value.iteritems():
+        for key, payload in value.items():
             for (child_path, error) in self._key_schema.validate(key):
                 yield ([key] + child_path, "Key error: " + error)
             for (child_path, error) in self._value_schema.validate(payload):
@@ -133,14 +133,14 @@ class WildcardDictField(Field):
 
     def serialize(self, value):
         ret_val = {}
-        for key, val in value.iteritems():
+        for key, val in value.items():
             ret_val[self._key_schema.serialize(key)] = \
                 self._value_schema.serialize(val)
         return ret_val
 
     def deserialize(self, value):
         ret_val = {}
-        for key, val in value.iteritems():
+        for key, val in value.items():
             ret_val[self._key_schema.deserialize(key)] = \
                 self._value_schema.deserialize(val)
         return ret_val

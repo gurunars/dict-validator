@@ -54,7 +54,7 @@ def validate(schema, value):
     >>> list(validate(Schema, {"field": "not sample"}))
     [(['field'], 'Not a sample')]
 
-    By default all field are required
+    By default all fields are required
 
     >>> list(validate(Schema, {}))
     [([], 'Key "field" is missing')]
@@ -63,7 +63,6 @@ def validate(schema, value):
 
     >>> list(validate(Schema, {"field": "sample", "unknown_field": "sample"}))
     [([], 'Unkown fields: unknown_field')]
-
 
     Optional fields are marked via required=False parameter.
     This parameter is available for any field and its behaviour is uniform.
@@ -105,7 +104,6 @@ def validate(schema, value):
     >>> list(validate(Schema, {"field": "sample"}))
     [(['field'], 'Error 1'), (['field'], 'Error 2')]
 
-
     Nested structures can be described using a DictField.
     This field requires a reference to the schema specifying a nested
     structure.
@@ -124,7 +122,6 @@ def validate(schema, value):
 
     >>> list(validate(Parent, {"child": {"other_field": "not sample"}}))
     [(['child', 'other_field'], 'Not a sample')]
-
 
     To represent collections of data (aka lists) a ListField should be used.
     The field requires an instance of some other field as its first argument.

@@ -9,7 +9,7 @@ def _wrap_schema(schema):
 
 def validate(schema, value):
     """
-    Validate value again a given schema.
+    Validate value against a given schema.
 
     :param schema: a class representing the structure to be used for validation
     :param value: a dict

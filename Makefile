@@ -1,13 +1,24 @@
-test:
-	./build-scripts/test.sh
+DOCKER_IMAGE=dict-validator
 
-docs:
-	./build-scripts/build_docs.sh
+UID=$(shell id -u $(USER))
+GID=$(shell id -g $(USER))
 
-publish-docs: docs
-	./build-scripts/publish_docs.sh
+DOCKER=docker run --rm \
+	    -v $(PWD):/project \
+	    -u $(UID):$(UID) \
+	    -w /project \
+	    -it $(DOCKER_IMAGE)
 
-publish: test publish-docs
-	./build-scripts/publish.sh
+docker-image:
+	docker build \
+	    --build-arg USER_UID=$(UID) \
+	    --build-arg USER_GID=$(GID) \
+	    -t $(DOCKER_IMAGE) .
 
-.PHONY: test publish docs publish-docs
+connect:
+	@$(DOCKER) /bin/bash
+
+%: docker-image
+	@$(DOCKER) make -f build-scripts/project.mk $@
+
+.PHONY: docker-image connect

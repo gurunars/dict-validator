@@ -7,6 +7,4 @@ Install into the repo:
     git subtree add --prefix=build-scripts/ build-scripts master
     ln -s build-scripts/Makefile Makefile
     ln -s build-scripts/MANIFEST.in MANIFEST.in
-    ln -s build-scripts/MIT_LICENSE LICENSE
-
     cp build-scripts/travis.yml.in .travis.yml

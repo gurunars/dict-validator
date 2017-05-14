@@ -3,7 +3,7 @@ python:
 - '3.6'
 install:
 - pip install -r build-requirements.txt
-script: make -f project.mk publish
+script: make -f ./build-scripts/project.mk publish
 sudo: false
 branches:
   only:

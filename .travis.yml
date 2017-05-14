@@ -10,6 +10,6 @@ branches:
   - master
 before_install:
 - openssl aes-256-cbc -K $encrypted_94aabc157ce6_key -iv $encrypted_94aabc157ce6_iv
-  -in build-scripts/deploy_key.enc -out build-scripts/deploy_key -d
+  -in travis/deploy_key.enc -out build-scripts/deploy_key -d
 - openssl aes-256-cbc -K $encrypted_9cb6e1718829_key -iv $encrypted_9cb6e1718829_iv
-  -in build-scripts/pypirc.enc -out build-scripts/pypirc -d
+  -in travis/pypirc.enc -out build-scripts/pypirc -d

@@ -1,1 +1,1 @@
-include LICENSE CHANGES README.rst setup.cfg
+include LICENSE CHANGES README.rst requirements.txt

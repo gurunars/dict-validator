@@ -10,7 +10,7 @@ DOCKER=docker run --rm \
 	    -it $(DOCKER_IMAGE)
 
 docker-image:
-	docker build \
+	docker build -f build-scripts/Dockerfile \
 	    --build-arg USER_UID=$(UID) \
 	    --build-arg USER_GID=$(GID) \
 	    -t $(DOCKER_IMAGE) .

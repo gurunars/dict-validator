@@ -1,4 +1,4 @@
-from dict_validator.fields import RegexpField
+from dict_validator.fields import StringField
 
 
 REGEXP = "".join([
@@ -11,7 +11,7 @@ REGEXP = "".join([
 ])
 
 
-class CamelCaseField(RegexpField):
+class CamelCaseField(StringField):
     """
     >>> from dict_validator import validate
 

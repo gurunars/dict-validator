@@ -1,7 +1,7 @@
-from dict_validator.fields import RegexpField
+from dict_validator.fields import StringField
 
 
-class SlugField(RegexpField):
+class SlugField(StringField):
     """
     Lower case alphanumerics delimited with dashes.
 

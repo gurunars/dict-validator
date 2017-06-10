@@ -1,4 +1,4 @@
-from dict_validator.fields import RegexpField
+from dict_validator.fields import StringField
 
 
 PART = r"([A-Z]{1}[a-z0-9]+)"
@@ -12,7 +12,7 @@ REGEXP = "".join([
 ])
 
 
-class PascalCaseField(RegexpField):
+class PascalCaseField(StringField):
     """
     >>> from dict_validator import validate
 

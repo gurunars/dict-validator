@@ -2,10 +2,10 @@
 
 import re
 
-from dict_validator.fields import RegexpField
+from dict_validator.fields import StringField
 
 
-class NameField(RegexpField):
+class NameField(StringField):
     """
     Human name represented with ASCII characters - e.g. John Smith
 

@@ -16,12 +16,11 @@ Most common RegexpField subclasses can be found in
 """
 
 from .choice_field import ChoiceField
-from .regexp_field import RegexpField
 from .string_field import StringField
 from .timestamp_field import TimestampField
 from .boolean_field import BooleanField
 from .number_field import NumberField
 from .wildcard_dict_field import WildcardDictField
 
-__all__ = ["ChoiceField", "RegexpField", "StringField", "TimestampField",
+__all__ = ["ChoiceField", "StringField", "TimestampField",
            "NumberField", "BooleanField", "WildcardDictField"]

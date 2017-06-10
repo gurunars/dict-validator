@@ -1,6 +1,6 @@
 """
 This package contains most frequently used subclasses of
-:class:`dict_validator.fields.RegexpField`.
+:class:`dict_validator.fields.StringField`.
 
  - :class:`EmailField`
  - :class:`PhoneField`

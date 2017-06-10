@@ -1,7 +1,7 @@
-from dict_validator.fields import RegexpField
+from dict_validator.fields import StringField
 
 
-class PhoneField(RegexpField):
+class PhoneField(StringField):
     """
     Make sure that the input is a valid phone number.
 

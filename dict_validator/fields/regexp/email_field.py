@@ -1,9 +1,9 @@
 import re
 
-from dict_validator.fields import RegexpField
+from dict_validator.fields import StringField
 
 
-class EmailField(RegexpField):
+class EmailField(StringField):
     """
     Make sure that the input is a valid email.
 

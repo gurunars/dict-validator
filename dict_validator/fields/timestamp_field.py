@@ -62,6 +62,11 @@ class TimestampField(Field):
     >>> list(validate(Schema, {"field": '2016-07-10'}))
     []
 
+    Serialized payload must be a string
+
+    >>> list(validate(Schema, {"field": 20160710}))
+    [(['field'], 'Not a string')]
+
     >>> deserialize(Schema, {"field": "2016-07-10"}).field
     datetime.date(2016, 7, 10)
 
@@ -111,6 +116,8 @@ class TimestampField(Field):
         self._granularity = granularity
 
     def _validate(self, value):
+        if not isinstance(value, str):
+            return "Not a string"
         try:
             datetime.datetime.strptime(value, self._granularity.value)
         except ValueError:

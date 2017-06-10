@@ -27,6 +27,11 @@ class RegexpField(Field):
     >>> list(validate(Schema, {"field": "cc"}))
     [(['field'], 'Did not match Regexp(TwoCharAOrB)')]
 
+    Serialized payload must be a string
+
+    >>> list(validate(Schema, {"field": 20160710}))
+    [(['field'], 'Not a string')]
+
     >>> from pprint import pprint
 
     >>> pprint(list(describe(Schema)), width=50)
@@ -43,6 +48,8 @@ class RegexpField(Field):
         self._metavar = metavar or ""
 
     def _validate(self, value):
+        if not isinstance(value, str):
+            return "Not a string"
         if not self._regexp.match(value):
             return "Did not match {}".format(self._type)
 

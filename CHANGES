@@ -1,3 +1,9 @@
+4.0.0
+
+    * Merged RegexpField and StringField into StringField
+    * Added extra validation for datetime field
+    * Added function for error serialization
+
 3.2.3
 
     * Transient release #3

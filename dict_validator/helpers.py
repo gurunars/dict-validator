@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 from .dict_field import DictField
 
 
@@ -159,6 +161,33 @@ def validate(schema, value):
 
     """
     return _wrap_schema(schema).validate(value)
+
+
+def serialize_errors(validation_results):
+    """
+    Transform a denormalized generator over the collection of errors
+    into a serializable normalized dict.
+
+    :param validation_generator: a collection of errors returned by
+                                 :func:`validate`
+    :return: dict with field paths as keys and lists of errors
+             corresponding to those paths as values
+
+    >>> error_collection = iter([
+    ...     (['field', 0], 'Error #1'),
+    ...     (['field', 2], 'Error #1'),
+    ...     (['field', 2], 'Error #2')
+    ... ])
+
+    >>> from pprint import pprint
+
+    >>> pprint(serialize_errors(error_collection))
+    {'field.0': ['Error #1'], 'field.2': ['Error #1', 'Error #2']}
+    """
+    return_value = defaultdict(list)
+    for path, error in validation_results:
+        return_value[".".join(map(str, path))].append(error)
+    return dict(return_value)
 
 
 def describe(schema):

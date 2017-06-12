@@ -3,14 +3,13 @@ This package contains most frequently used implementations of
 :class:`dict_validator.Field`.
 
  - :class:`ChoiceField`
- - :class:`RegexpField`
  - :class:`StringField`
  - :class:`TimestampField`
  - :class:`BooleanField`
  - :class:`NumberField`
  - :class:`WildcardDictField`
 
-Most common RegexpField subclasses can be found in
+Most common regexp based StringField subclasses can be found in
 :mod:`dict_validator.fields.regexp`.
 
 """

@@ -1,3 +1,7 @@
+4.0.1
+
+    * Added new function referencies to __init__.py
+
 4.0.0
 
     * Merged RegexpField and StringField into StringField

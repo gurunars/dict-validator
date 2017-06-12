@@ -22,6 +22,8 @@ Once a schema is defined it is possible to employ one of the functions to
 process the payload and/or schema:
 
  - :func:`validate` - to check the payload
+ - :func:`serialize_errors` - to to transform :func:`validate` results into a
+   flat dict that could be sent over the wire
  - :func:`describe` - to present the schema in a serializable format
  - :func:`serialize` - to transform the payload with Python specific types
    into something that could be sent over the wire
@@ -31,10 +33,11 @@ Most common Field subclasses can be found in :mod:`dict_validator.fields`.
 
 """
 
-from .helpers import validate, describe, serialize, deserialize
+from .helpers import validate, describe, serialize, deserialize, \
+    serialize_errors
 from .field import Field
 from .list_field import ListField
 from .dict_field import DictField
 
 __all__ = ["validate", "describe", "serialize", "deserialize", "Field",
-           "DictField", "ListField"]
+           "DictField", "ListField", "serialize_errors"]

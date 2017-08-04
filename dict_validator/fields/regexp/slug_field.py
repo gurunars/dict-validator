@@ -1,14 +1,14 @@
-from dict_validator.fields import StringField
+from dict_validator.fields import String
 
 
-class SlugField(StringField):
+class Slug(String):
     """
     Lower case alphanumerics delimited with dashes.
 
     >>> from dict_validator import validate
 
     >>> class Schema:
-    ...     field = SlugField()
+    ...     field = Slug()
 
     >>> list(validate(Schema, {"field": 'title-of-web-page'}))
     []
@@ -31,6 +31,6 @@ class SlugField(StringField):
     """
 
     def __init__(self, *args, **kwargs):
-        super(SlugField, self).__init__(
+        super(Slug, self).__init__(
             r"^[a-z0-9]+(-[a-z0-9]+)*$",
             "slug", *args, **kwargs)

@@ -1,4 +1,4 @@
-from abc import ABCMeta, abstractmethod, abstractproperty
+from abc import ABCMeta, abstractmethod
 
 
 class Field(object, metaclass=ABCMeta):
@@ -9,8 +9,7 @@ class Field(object, metaclass=ABCMeta):
     :param description: textual explanation of what the field represents
     :param required: True by default. If false - the field is optional
 
-    Each field subclass must implement :attr:`_type` abstract property and
-    :meth:`_validate` abstract methods.
+    Each field subclass must implement :meth:`_validate` abstract method.
 
     Each field may also implement :meth:`_describe` method.
 
@@ -22,7 +21,6 @@ class Field(object, metaclass=ABCMeta):
 
     .. document private functions
     .. automethod:: _describe
-    .. autoattribute:: _type
     .. automethod:: _validate
 
     """
@@ -37,14 +35,6 @@ class Field(object, metaclass=ABCMeta):
 
         :return: **str:%JSON-SERIALIZABLE%** key:value pairs
         :rtype: dict
-        """
-
-    @abstractproperty
-    def _type(self):
-        """
-        :return: a human readable string representing a type to be mentioned
-                 in the describe method. By default it is a class name.
-        :rtype: str
         """
 
     @abstractmethod
@@ -86,7 +76,7 @@ class Field(object, metaclass=ABCMeta):
             e.g (["parent", "child"], {"required": False})
         """
         description = self._describe() or {}
-        description["type"] = self._type
+        description["type"] = self.__class__.__name__
         if not self._required:
             description["required"] = False
         if self._description:

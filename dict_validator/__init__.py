@@ -10,8 +10,8 @@ that boils down to a definition of the following shape:
 .. code:: python
 
     class Schema:
-        field1 = SampleField()
-        field2 = OtherField()
+        field1 = Sample()  # this a field
+        field2 = Other()  # and this is a field
 
 Where each field is a subclass of a :class:`Field` with zero or more
 constructor parameters.
@@ -36,8 +36,8 @@ Most common Field subclasses can be found in :mod:`dict_validator.fields`.
 from .helpers import validate, describe, serialize, deserialize, \
     serialize_errors
 from .field import Field
-from .list_field import ListField
-from .dict_field import DictField
+from .list_field import List
+from .dict_field import Dict
 
 __all__ = ["validate", "describe", "serialize", "deserialize", "Field",
-           "DictField", "ListField", "serialize_errors"]
+           "Dict", "List", "serialize_errors"]

@@ -1,14 +1,14 @@
-from dict_validator.fields import StringField
+from dict_validator.fields import String
 
 
-class PhoneField(StringField):
+class Phone(String):
     """
     Make sure that the input is a valid phone number.
 
     >>> from dict_validator import validate, deserialize
 
     >>> class Schema:
-    ...     field = PhoneField()
+    ...     field = Phone()
 
     >>> list(validate(Schema, {"field": '+358 807 12'}))
     []
@@ -24,7 +24,7 @@ class PhoneField(StringField):
     """
 
     def __init__(self, *args, **kwargs):
-        super(PhoneField, self).__init__(
+        super(Phone, self).__init__(
             r"^\+[0-9]{1,4}[ 0-9]+$", "phone",
             *args, **kwargs)
 

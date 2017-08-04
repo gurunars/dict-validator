@@ -1,7 +1,7 @@
 from .field import Field
 
 
-class ListField(Field):
+class List(Field):
     """
     A collection of arbitrary items.
 
@@ -10,12 +10,8 @@ class ListField(Field):
     """
 
     def __init__(self, schema, *args, **kwargs):
-        super(ListField, self).__init__(*args, **kwargs)
+        super(List, self).__init__(*args, **kwargs)
         self._schema = schema
-
-    @property
-    def _type(self):
-        return "List"
 
     def _validate(self, value):
         if not isinstance(value, list):
@@ -28,7 +24,7 @@ class ListField(Field):
             count += 1
 
     def describe(self):
-        for result in super(ListField, self).describe():
+        for result in super(List, self).describe():
             yield result
         for (child_path, description) in self._schema.describe():
             yield (['{N}'] + child_path, description)

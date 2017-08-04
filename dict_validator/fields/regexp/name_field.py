@@ -2,10 +2,10 @@
 
 import re
 
-from dict_validator.fields import StringField
+from dict_validator.fields import String
 
 
-class NameField(StringField):
+class Name(String):
     """
     Human name represented with ASCII characters - e.g. John Smith
 
@@ -14,7 +14,7 @@ class NameField(StringField):
     >>> from dict_validator import validate
 
     >>> class Schema:
-    ...     field = NameField()
+    ...     field = Name()
 
     Expects one or more name parts delimited with space
 
@@ -47,7 +47,7 @@ class NameField(StringField):
     Non capitalized name parts can be enabled though
 
     >>> class Schema:
-    ...     field = NameField(lowercase_allowed=True)
+    ...     field = Name(lowercase_allowed=True)
 
     >>> list(validate(Schema, {"field": 'John mcFault'}))
     []
@@ -55,13 +55,13 @@ class NameField(StringField):
     """
 
     def __init__(self, lowercase_allowed=False, *args, **kwargs):
-        super(NameField, self).__init__(
+        super(Name, self).__init__(
             r"^\w+( \w+)*$",
             "name", *args, **kwargs)
         self._lowercase_allowed = lowercase_allowed
 
     def _validate(self, value):
-        ret_val = super(NameField, self)._validate(value)
+        ret_val = super(Name, self)._validate(value)
         if ret_val:
             return ret_val
         if not self._lowercase_allowed:

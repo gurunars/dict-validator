@@ -8,7 +8,7 @@ def _datetime(value):
     return value
 
 
-class TimestampField(Field):
+class Timestamp(Field):
     """
     UTC timestamp. Could be a datetime, a date or time. By default it is
     datetime.
@@ -20,7 +20,7 @@ class TimestampField(Field):
     The outgoing datetime object is serialized into a string.
 
     :param granularity: one of
-        [TimestampField.DateTime, TimestampField.Date, TimestampField.Time]
+        [Timestamp.DateTime, Timestamp.Date, Timestamp.Time]
 
     >>> from argparse import Namespace
     >>> from pprint import pprint
@@ -30,7 +30,7 @@ class TimestampField(Field):
     By default a DateTime is expected.
 
     >>> class Schema:
-    ...     field = TimestampField()
+    ...     field = Timestamp()
 
     >>> pprint(list(describe(Schema)))
     [([], {'type': 'Dict'}),
@@ -53,7 +53,7 @@ class TimestampField(Field):
     Accept Date only.
 
     >>> class Schema:
-    ...     field = TimestampField(granularity=TimestampField.Date)
+    ...     field = Timestamp(granularity=Timestamp.Date)
 
     >>> pprint(list(describe(Schema)))
     [([], {'type': 'Dict'}),
@@ -78,7 +78,7 @@ class TimestampField(Field):
     Accept Time only.
 
     >>> class Schema:
-    ...     field = TimestampField(granularity=TimestampField.Time)
+    ...     field = Timestamp(granularity=Timestamp.Time)
 
     >>> pprint(list(describe(Schema)))
     [([], {'type': 'Dict'}),
@@ -112,7 +112,7 @@ class TimestampField(Field):
         granulate = datetime.datetime.time
 
     def __init__(self, granularity=DateTime, *args, **kwargs):
-        super(TimestampField, self).__init__(*args, **kwargs)
+        super(Timestamp, self).__init__(*args, **kwargs)
         self._granularity = granularity
 
     def _validate(self, value):
@@ -129,10 +129,6 @@ class TimestampField(Field):
 
     def serialize(self, value):
         return value.strftime(self._granularity.value)
-
-    @property
-    def _type(self):
-        return "Timestamp"
 
     def _describe(self):
         return {

@@ -1,9 +1,9 @@
 import re
 
-from dict_validator.fields import StringField
+from dict_validator.fields import String
 
 
-class EmailField(StringField):
+class Email(String):
     """
     Make sure that the input is a valid email.
 
@@ -13,7 +13,7 @@ class EmailField(StringField):
     >>> from dict_validator import validate, deserialize
 
     >>> class Schema:
-    ...     field = EmailField()
+    ...     field = Email()
 
     >>> list(validate(Schema, {"field": "test@example.com"}))
     []
@@ -61,7 +61,7 @@ class EmailField(StringField):
     Specify a domain:
 
     >>> class Schema:
-    ...     field = EmailField(domain="example.com")
+    ...     field = Email(domain="example.com")
 
     >>> list(validate(Schema, {"field": "test@example.com"}))
     []
@@ -81,7 +81,7 @@ class EmailField(StringField):
             domain = re.escape(domain)
         else:
             domain = r"(?:[a-zA-Z0-9-]+\.)+[a-z]{2,}"
-        super(EmailField, self).__init__(
+        super(Email, self).__init__(
             r"^[a-zA-Z0-9._%+-]+@{}$".format(domain),
             "email", *args, **kwargs)
 

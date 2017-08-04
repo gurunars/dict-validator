@@ -1,11 +1,11 @@
 from collections import defaultdict
 
-from .dict_field import DictField
+from .dict_field import Dict
 
 
 def _wrap_schema(schema):
     if isinstance(schema, type):
-        return DictField(description=schema.__doc__, schema=schema)
+        return Dict(description=schema.__doc__, schema=schema)
     return schema
 
 
@@ -18,23 +18,19 @@ def validate(schema, value):
     :yield: (path, erro_msg),
         e.g (["parent", "child"], "Error message")
 
-    >>> from dict_validator import Field, ListField, DictField
+    >>> from dict_validator import Field, List, Dict
 
     To report a single error _validate method of a field subclass must
     return a string description of the problem.
 
-    >>> class SampleOnlyField(Field):
-    ...
-    ...     @property
-    ...     def _type(self):
-    ...         return "NOT IMPORTANT"
+    >>> class SampleOnly(Field):
     ...
     ...     def _validate(self, value):
     ...         if value != "sample":
     ...             return "Not a sample"
 
     >>> class Schema:
-    ...     field = SampleOnlyField()
+    ...     field = SampleOnly()
 
     If there are no problems - nothing is yielded.
     Note: validate function is a generator - thus it has to be converted
@@ -70,7 +66,7 @@ def validate(schema, value):
     This parameter is available for any field and its behaviour is uniform.
 
     >>> class Schema:
-    ...     field = SampleOnlyField(required=False)
+    ...     field = SampleOnly(required=False)
 
     >>> list(validate(Schema, {"field": "sample"}))
     []
@@ -87,18 +83,14 @@ def validate(schema, value):
     It is a good idea if there is a need to validate multiple aspects
     of the input value.
 
-    >>> class WithYieldedErrorField(Field):
-    ...
-    ...     @property
-    ...     def _type(self):
-    ...         return "NOT IMPORTANT"
+    >>> class WithYieldedError(Field):
     ...
     ...     def _validate(self, value):
     ...         yield "Error 1"
     ...         yield "Error 2"
 
     >>> class Schema:
-    ...     field = WithYieldedErrorField()
+    ...     field = WithYieldedError()
 
     Each error has its own unique error tuple even if the errors originate
     from the same field.
@@ -106,15 +98,15 @@ def validate(schema, value):
     >>> list(validate(Schema, {"field": "sample"}))
     [(['field'], 'Error 1'), (['field'], 'Error 2')]
 
-    Nested structures can be described using a DictField.
+    Nested structures can be described using a Dict field.
     This field requires a reference to the schema specifying a nested
     structure.
 
     >>> class Child:
-    ...     other_field = SampleOnlyField()
+    ...     other_field = SampleOnly()
 
     >>> class Parent:
-    ...     child = DictField(Child)
+    ...     child = Dict(Child)
 
     >>> list(validate(Parent, {"child": {"other_field": "sample"}}))
     []
@@ -125,11 +117,11 @@ def validate(schema, value):
     >>> list(validate(Parent, {"child": {"other_field": "not sample"}}))
     [(['child', 'other_field'], 'Not a sample')]
 
-    To represent collections of data (aka lists) a ListField should be used.
+    To represent collections of data (aka lists) a List should be used.
     The field requires an instance of some other field as its first argument.
 
     >>> class Schema:
-    ...     field = ListField(SampleOnlyField())
+    ...     field = List(SampleOnly())
 
     >>> list(validate(Schema, {"field": "NOT A LIST"}))
     [(['field'], 'Not a list')]
@@ -148,10 +140,10 @@ def validate(schema, value):
     list and dict fields.
 
     >>> class Child:
-    ...     other_field = SampleOnlyField()
+    ...     other_field = SampleOnly()
 
     >>> class Parent:
-    ...     child = ListField(DictField(Child))
+    ...     child = List(Dict(Child))
 
     >>> list(validate(Parent, {"child": [{"other_field": "sample"}]}))
     []
@@ -200,18 +192,14 @@ def describe(schema):
     :yield: (path, {...description...}),
         e.g (["parent", "child"], {"required": False})
 
-    >>> from dict_validator import Field, ListField, DictField
+    >>> from dict_validator import Field, List, Dict
 
-    Each custom field must be a Field subclass with _type property
-    and _validate method implemented.
+    Each custom field must be a Field subclass with _validate method
+    implemented.
 
     See validate function for details.
 
     >>> class AnyValue(Field):
-    ...
-    ...     @property
-    ...     def _type(self):
-    ...         return "AnyValue"
     ...
     ...     def _validate(self, value):
     ...         pass
@@ -221,14 +209,14 @@ def describe(schema):
     The "description" can be added to any field.
 
     >>> class Child:
-    ...     items = ListField(AnyValue("AnyValue item"),
+    ...     items = List(AnyValue("AnyValue item"),
     ...                       description="A collection of important items")
 
     >>> class Parent:
     ...     '''Schema docstring'''
     ...
     ...     ignored_field = "Nothing"
-    ...     child = DictField(Child, description="Dict child")
+    ...     child = Dict(Child, description="Dict child")
     ...     plain_field = AnyValue(description="Pure string", required=False)
 
     Since return value is a generator it has to be explicitly converted to
@@ -269,33 +257,29 @@ def serialize(schema, value):
     :param value: a pythonic object
     :return: a dict ready to be sent over the wire
 
-    >>> from dict_validator import Field, ListField, DictField, serialize
+    >>> from dict_validator import Field, List, Dict, serialize
 
     Each custom field must be a Field should implement a serialize method
     to enable value transformations by default the value is returned as is.
 
     See Field docs for details
 
-    >>> class AnyValueField(Field):
-    ...
-    ...     @property
-    ...     def _type(self):
-    ...         return "NOT IMPORTANT"
+    >>> class AnyValue(Field):
     ...
     ...     def _validate(self, value):
     ...         pass
     ...
     ...     def serialize(self, value):
-    ...         return "SERIALIZED {}".format(super(AnyValueField, self)
+    ...         return "SERIALIZED {}".format(super(AnyValue, self)
     ...             .serialize(value))
 
     >>> class Child:
-    ...     items = ListField(AnyValueField("String item"),
+    ...     items = List(AnyValue("String item"),
     ...                       description="A collection of important items")
 
     >>> class Parent:
-    ...     child = DictField(Child, description="Dict child")
-    ...     plain_field = AnyValueField(description="Pure string",
+    ...     child = Dict(Child, description="Dict child")
+    ...     plain_field = AnyValue(description="Pure string",
     ...                                 required=False)
 
     In order to construct a tree of python objects to serialize it later one
@@ -319,7 +303,7 @@ def serialize(schema, value):
     When serializing optional fields the missing values are set to None.
 
     >>> class Schema:
-    ...     field = AnyValueField(required=False)
+    ...     field = AnyValue(required=False)
 
     >>> serialize(Schema, {})
     {'field': None}
@@ -339,33 +323,29 @@ def deserialize(schema, value):
     :param value: a dict sent over the wire
     :return: a pythonic object
 
-    >>> from dict_validator import Field, ListField, DictField, deserialize
+    >>> from dict_validator import Field, List, Dict, deserialize
 
     Each custom field must be a Field should implement a deserialize method
     to enable value transformations by default the value is returned as is.
 
     See Field docs for details
 
-    >>> class AnyValueField(Field):
-    ...
-    ...     @property
-    ...     def _type(self):
-    ...         return "NOT IMPORTANT"
+    >>> class AnyValue(Field):
     ...
     ...     def _validate(self, value):
     ...         pass
     ...
     ...     def deserialize(self, value):
-    ...         return "DESERIALIZED {}".format(super(AnyValueField, self)
+    ...         return "DESERIALIZED {}".format(super(AnyValue, self)
     ...             .deserialize(value))
 
     >>> class Child:
-    ...     items = ListField(AnyValueField("String item"),
+    ...     items = List(AnyValue("String item"),
     ...                       description="A collection of important items")
 
     >>> class Parent:
-    ...     child = DictField(Child, description="Dict child")
-    ...     plain_field = AnyValueField(description="Pure string",
+    ...     child = Dict(Child, description="Dict child")
+    ...     plain_field = AnyValue(description="Pure string",
     ...                                 required=False)
 
     >>> parent = deserialize(Parent, {
@@ -384,7 +364,7 @@ def deserialize(schema, value):
     When deserializing optional fields the missing values are set to None.
 
     >>> class Schema:
-    ...     field = AnyValueField(required=False)
+    ...     field = AnyValue(required=False)
 
     >>> deserialize(Schema, {}).field
 

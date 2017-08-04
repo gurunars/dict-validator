@@ -16,6 +16,8 @@ RUN groupadd \
     usermod -aG sudo hostuser && \
     echo "hostuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+ADD build-scripts/build-requirements.txt /build/
+
 ADD *requirements.txt /build/
 RUN find /build -name '*requirements.txt' -exec pip install -r {} \;
 

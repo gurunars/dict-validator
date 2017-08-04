@@ -1,13 +1,8 @@
-test:
-	./build-scripts/test.sh
-
-docs:
-	./build-scripts/build_docs.sh
+test docs publish-docs publish:
+	./build-scripts/$@.sh
 
 publish-docs: docs
-	./build-scripts/publish_docs.sh
 
 publish: test publish-docs
-	./build-scripts/publish.sh
 
 .PHONY: test publish docs publish-docs

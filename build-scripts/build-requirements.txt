@@ -1,0 +1,8 @@
+sphinx_rtd_theme
+sphinx
+nose
+wheel
+coverage
+pep8
+pyflakes
+pylint

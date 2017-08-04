@@ -4,9 +4,10 @@ from .dict_field import Dict
 
 
 def _wrap_schema(schema):
-    if isinstance(schema, type):
-        return Dict(description=schema.__doc__, schema=schema)
-    return schema
+    return Dict(
+        description=schema.__doc__,
+        schema=schema
+    ) if isinstance(schema, type) else schema
 
 
 def validate(schema, value):

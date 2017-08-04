@@ -1,17 +1,13 @@
 from dict_validator import Field
 
 
-class AnyField(Field):
-
-    @property
-    def _type(self):
-        return "AnyValue"
+class Any(Field):
 
     def _validate(self, value):
         pass
 
 
-class WildcardDictField(Field):
+class WildcardDict(Field):
     """
     Match a dict with any dict with any key/value pairs.
 
@@ -25,7 +21,7 @@ class WildcardDictField(Field):
     >>> from dict_validator import validate, describe, serialize, deserialize
 
     >>> class Schema:
-    ...     field = WildcardDictField()
+    ...     field = WildcardDict()
 
     >>> list(validate(Schema, {"field": {}}))
     []
@@ -45,17 +41,13 @@ class WildcardDictField(Field):
     >>> pprint(list(describe(Schema)), width=70)
     [([], {'type': 'Dict'}),
      (['field'], {'type': 'WildcardDict'}),
-     (['field', '{KEY}'], {'type': 'AnyValue'}),
-     (['field', '{VALUE}'], {'type': 'AnyValue'})]
+     (['field', '{KEY}'], {'type': 'Any'}),
+     (['field', '{VALUE}'], {'type': 'Any'})]
 
     If it is need it is possible to have validation for keys, values or both.
     This can be achieved by defining respective schemas.
 
-    >>> class SampleOnlyField(Field):
-    ...
-    ...     @property
-    ...     def _type(self):
-    ...         return "SampleOnly"
+    >>> class SampleOnly(Field):
     ...
     ...     def _validate(self, value):
     ...         if not value.startswith("sample"):
@@ -68,8 +60,8 @@ class WildcardDictField(Field):
     ...         return "py(" +  value + ")"
 
     >>> class Schema:
-    ...     field = WildcardDictField(key_schema=SampleOnlyField(),
-    ...                               value_schema=SampleOnlyField())
+    ...     field = WildcardDict(key_schema=SampleOnly(),
+    ...                          value_schema=SampleOnly())
 
     >>> pprint(list(describe(Schema)), width=70)
     [([], {'type': 'Dict'}),
@@ -105,21 +97,17 @@ class WildcardDictField(Field):
     """
 
     def __init__(self, key_schema=None, value_schema=None, *args, **kwargs):
-        super(WildcardDictField, self).__init__(*args, **kwargs)
-        self._key_schema = key_schema or AnyField()
-        self._value_schema = value_schema or AnyField()
+        super(WildcardDict, self).__init__(*args, **kwargs)
+        self._key_schema = key_schema or Any()
+        self._value_schema = value_schema or Any()
 
     def describe(self):
-        for result in super(WildcardDictField, self).describe():
+        for result in super(WildcardDict, self).describe():
             yield result
         for (child_path, description) in self._key_schema.describe():
             yield (['{KEY}'] + child_path, description)
         for (child_path, description) in self._value_schema.describe():
             yield (['{VALUE}'] + child_path, description)
-
-    @property
-    def _type(self):
-        return "WildcardDict"
 
     def _validate(self, value):
         if not isinstance(value, dict):

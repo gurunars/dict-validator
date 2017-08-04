@@ -1,4 +1,4 @@
-from dict_validator.fields import StringField
+from dict_validator.fields import String
 
 
 REGEXP = "".join([
@@ -11,12 +11,12 @@ REGEXP = "".join([
 ])
 
 
-class UnderscoreCaseField(StringField):
+class UnderscoreCase(String):
     """
     >>> from dict_validator import validate
 
     >>> class Schema:
-    ...     field = UnderscoreCaseField()
+    ...     field = UnderscoreCase()
 
     >>> list(validate(Schema, {"field": 'value'}))
     []
@@ -61,6 +61,6 @@ class UnderscoreCaseField(StringField):
     """
 
     def __init__(self, *args, **kwargs):
-        super(UnderscoreCaseField, self).__init__(
+        super(UnderscoreCase, self).__init__(
             REGEXP,
             "underscore-case", *args, **kwargs)

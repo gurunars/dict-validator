@@ -3,7 +3,7 @@ import re
 from dict_validator import Field
 
 
-class StringField(Field):
+class String(Field):
     """
     Match any input of a string type.
 
@@ -16,7 +16,7 @@ class StringField(Field):
     Plain string field
 
     >>> class Schema:
-    ...     field = StringField()
+    ...     field = String()
 
     >>> list(validate(Schema, {"field": "foobar"}))
     []
@@ -30,7 +30,7 @@ class StringField(Field):
     String field with a regular expression
 
     >>> class Schema:
-    ...     field = StringField(r"^[ab]{2}$", metavar="TwoCharAOrB")
+    ...     field = String(r"^[ab]{2}$", metavar="TwoCharAOrB")
 
     >>> list(validate(Schema, {"field": "aa"}))
     []
@@ -59,7 +59,7 @@ class StringField(Field):
     """
 
     def __init__(self, regexp=None, metavar=None, *args, **kwargs):
-        super(StringField, self).__init__(*args, **kwargs)
+        super(String, self).__init__(*args, **kwargs)
         self._regexp = re.compile(regexp, re.UNICODE) if regexp else None
         self._metavar = metavar or ""
 
@@ -74,7 +74,3 @@ class StringField(Field):
         return {
             "pattern": self._regexp.pattern if self._regexp else None
         }
-
-    @property
-    def _type(self):
-        return "String"

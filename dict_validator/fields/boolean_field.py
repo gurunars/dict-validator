@@ -1,14 +1,14 @@
 from dict_validator import Field
 
 
-class BooleanField(Field):
+class Boolean(Field):
     """
     Match a boolean.
 
     >>> from dict_validator import validate, describe
 
     >>> class Schema:
-    ...     field = BooleanField()
+    ...     field = Boolean()
 
     >>> list(validate(Schema, {"field": True}))
     []
@@ -20,10 +20,6 @@ class BooleanField(Field):
     [([], {'type': 'Dict'}), (['field'], {'type': 'Boolean'})]
 
     """
-
-    @property
-    def _type(self):
-        return "Boolean"
 
     def _validate(self, value):
         if not isinstance(value, bool):

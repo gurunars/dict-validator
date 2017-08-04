@@ -1,26 +1,26 @@
 """
 This package contains most frequently used subclasses of
-:class:`dict_validator.fields.StringField`.
+:class:`dict_validator.fields.String`.
 
- - :class:`EmailField`
- - :class:`PhoneField`
- - :class:`UrlField`
- - :class:`NameField`
- - :class:`SlugField`
- - :class:`PascalCaseField`
- - :class:`CamelCaseField`
- - :class:`UnderscoreCaseField`
+ - :class:`Email`
+ - :class:`Phone`
+ - :class:`Url`
+ - :class:`Name`
+ - :class:`Slug`
+ - :class:`PascalCase`
+ - :class:`CamelCase`
+ - :class:`UnderscoreCase`
 
 """
 
-from .email_field import EmailField
-from .phone_field import PhoneField
-from .url_field import UrlField
-from .name_field import NameField
-from .slug_field import SlugField
-from .camel_case_field import CamelCaseField
-from .pascal_case_field import PascalCaseField
-from .underscore_case_field import UnderscoreCaseField
+from .email_field import Email
+from .phone_field import Phone
+from .url_field import Url
+from .name_field import Name
+from .slug_field import Slug
+from .camel_case_field import CamelCase
+from .pascal_case_field import PascalCase
+from .underscore_case_field import UnderscoreCase
 
-__all__ = ["EmailField", "PhoneField", "UrlField", "NameField", "SlugField",
-           "PascalCaseField", "CamelCaseField", "UnderscoreCaseField"]
+__all__ = ["Email", "Phone", "Url", "Name", "Slug",
+           "PascalCase", "CamelCase", "UnderscoreCase"]

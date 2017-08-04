@@ -1,6 +1,6 @@
 import re
 
-from dict_validator.fields import StringField
+from dict_validator.fields import String
 
 
 PROTOCOL = r"(https?:\/\/)?"
@@ -12,7 +12,7 @@ PORT = r"(:([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|" + \
        r"65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5]))?"
 
 
-class UrlField(StringField):
+class Url(String):
     """
     Simple pattern to match http or https URL.
 
@@ -26,7 +26,7 @@ class UrlField(StringField):
     By default a wildcard URL is matched.
 
     >>> class Schema:
-    ...     field = UrlField()
+    ...     field = Url()
 
     >>> list(validate(Schema,
     ...     {"field": "http://www.example.com/path-to-resource"
@@ -67,7 +67,7 @@ class UrlField(StringField):
     values.
 
     >>> class Schema:
-    ...     field = UrlField(protocol="ftp", domain="example.com",
+    ...     field = Url(protocol="ftp", domain="example.com",
     ...                      path="/foobar-zooloo", port=8080)
 
     >>> list(validate(Schema,
@@ -122,4 +122,4 @@ class UrlField(StringField):
         pattern = r"^{protocol}{domain}{port}{path}{query}{hash}$".format(
             protocol=protocol, domain=domain, port=port, path=path,
             query=QUERY, hash=HASH)
-        super(UrlField, self).__init__(pattern, "url", *args, **kwargs)
+        super(Url, self).__init__(pattern, "url", *args, **kwargs)

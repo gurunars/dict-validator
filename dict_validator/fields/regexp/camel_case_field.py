@@ -1,4 +1,4 @@
-from dict_validator.fields import StringField
+from dict_validator.fields import String
 
 
 REGEXP = "".join([
@@ -11,12 +11,12 @@ REGEXP = "".join([
 ])
 
 
-class CamelCaseField(StringField):
+class CamelCase(String):
     """
     >>> from dict_validator import validate
 
     >>> class Schema:
-    ...     field = CamelCaseField()
+    ...     field = CamelCase()
 
     >>> list(validate(Schema, {"field": 'value'}))
     []
@@ -53,6 +53,6 @@ class CamelCaseField(StringField):
     """
 
     def __init__(self, *args, **kwargs):
-        super(CamelCaseField, self).__init__(
+        super(CamelCase, self).__init__(
             REGEXP,
             "camel-case", *args, **kwargs)

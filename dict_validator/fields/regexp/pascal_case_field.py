@@ -1,4 +1,4 @@
-from dict_validator.fields import StringField
+from dict_validator.fields import String
 
 
 PART = r"([A-Z]{1}[a-z0-9]+)"
@@ -12,12 +12,12 @@ REGEXP = "".join([
 ])
 
 
-class PascalCaseField(StringField):
+class PascalCase(String):
     """
     >>> from dict_validator import validate
 
     >>> class Schema:
-    ...     field = PascalCaseField()
+    ...     field = PascalCase()
 
     >>> list(validate(Schema, {"field": 'ValueCapitalized'}))
     []
@@ -49,6 +49,6 @@ class PascalCaseField(StringField):
     """
 
     def __init__(self, *args, **kwargs):
-        super(PascalCaseField, self).__init__(
+        super(PascalCase, self).__init__(
             REGEXP,
             "pascal-case", *args, **kwargs)

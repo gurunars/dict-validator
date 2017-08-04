@@ -1,7 +1,7 @@
 from .field import Field
 
 
-class DictField(Field):
+class Dict(Field):
     """
     A dict of values.
 
@@ -11,12 +11,8 @@ class DictField(Field):
     """
 
     def __init__(self, schema, *args, **kwargs):
-        super(DictField, self).__init__(*args, **kwargs)
+        super(Dict, self).__init__(*args, **kwargs)
         self._schema = schema
-
-    @property
-    def _type(self):
-        return "Dict"
 
     def _get_fields(self):
         for key in dir(self._schema):
@@ -47,7 +43,7 @@ class DictField(Field):
                    "Unkown fields: {}".format(", ".join(list(value.keys()))))
 
     def describe(self):
-        for result in super(DictField, self).describe():
+        for result in super(Dict, self).describe():
             yield result
         for key, subschema in self._get_fields():
             for (child_path, description) in subschema.describe():

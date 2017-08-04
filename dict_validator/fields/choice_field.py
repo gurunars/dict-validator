@@ -1,7 +1,7 @@
 from dict_validator import Field
 
 
-class ChoiceField(Field):
+class Choice(Field):
     """
     Accept any type of input as long as it matches on of the choices
     mentioned in the provided list.
@@ -11,7 +11,7 @@ class ChoiceField(Field):
     >>> from dict_validator import validate, describe
 
     >>> class Schema:
-    ...     field = ChoiceField(choices=["ONE", "TWO", 3, 4])
+    ...     field = Choice(choices=["ONE", "TWO", 3, 4])
 
     >>> list(validate(Schema, {"field": "ONE"}))
     []
@@ -37,16 +37,12 @@ class ChoiceField(Field):
     """
 
     def __init__(self, choices, *args, **kwargs):
-        super(ChoiceField, self).__init__(*args, **kwargs)
+        super(Choice, self).__init__(*args, **kwargs)
         self._choices = choices
 
     def _validate(self, value):
         if value not in self._choices:
             return "Not among the choices"
-
-    @property
-    def _type(self):
-        return "Choice"
 
     def _describe(self):
         return {

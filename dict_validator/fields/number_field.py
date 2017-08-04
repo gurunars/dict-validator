@@ -1,7 +1,7 @@
 from dict_validator import Field
 
 
-class NumberField(Field):
+class Number(Field):
     """
     Match integers, floats and longs
 
@@ -12,7 +12,7 @@ class NumberField(Field):
     >>> from dict_validator import validate, describe
 
     >>> class Schema:
-    ...     field = NumberField(min=10, max=20)
+    ...     field = Number(min=10, max=20)
 
     >>> list(validate(Schema, {"field": 15}))
     []
@@ -41,7 +41,7 @@ class NumberField(Field):
     To disable floats - set can_be_float to False (it is True by default).
 
     >>> class Schema:
-    ...     field = NumberField(can_be_float=False)
+    ...     field = Number(can_be_float=False)
 
     >>> list(validate(Schema, {"field": 15.0}))
     [(['field'], 'Not a valid number')]
@@ -50,7 +50,7 @@ class NumberField(Field):
 
     # pylint: disable=redefined-builtin
     def __init__(self, min=None, max=None, can_be_float=True, *args, **kwargs):
-        super(NumberField, self).__init__(*args, **kwargs)
+        super(Number, self).__init__(*args, **kwargs)
         self._min = min
         self._max = max
         self._can_be_float = can_be_float
@@ -68,10 +68,6 @@ class NumberField(Field):
 
         if self._max is not None and value > self._max:
             return "Too large"
-
-    @property
-    def _type(self):
-        return "Number"
 
     def _describe(self):
         return {

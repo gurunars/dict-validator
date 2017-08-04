@@ -17,7 +17,6 @@ RUN groupadd \
     echo "hostuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 ADD build-scripts/build-requirements.txt /build/
-ADD build-scripts/coveragerc /build/
 
 ADD *requirements.txt /build/
 RUN find /build -name '*requirements.txt' -exec pip install -r {} \;

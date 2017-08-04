@@ -1,3 +1,8 @@
+5.0.0
+
+    * Dropped Field _type abstract property. Use class names.
+    * Dropped "Field" suffix from field class names.
+
 4.0.1
 
     * Added new function referencies to __init__.py

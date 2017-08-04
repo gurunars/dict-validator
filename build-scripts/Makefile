@@ -18,7 +18,7 @@ docker-image:
 connect:
 	@$(DOCKER) /bin/bash
 
-test docs publish-docs publish: docker-image
+test docs publish publish-docs: docker-image
 	@$(DOCKER) make -f build-scripts/project.mk $@
 
-.PHONY: docker-image connect test docs publish-docs publish
+.PHONY: docker-image connect test docs publish publish-docs

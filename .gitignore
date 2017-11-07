@@ -1,3 +1,5 @@
+.wercker
+.coveragerc
 deploy_key
 build
 dist

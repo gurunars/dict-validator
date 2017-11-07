@@ -1,0 +1,12 @@
+box:
+  id: python
+
+dev:
+  steps:
+    - pip-install:
+        requirements_file: "build-scripts/build-requirements.txt"
+    - pip-install:
+        requirements_file: ""
+    - internal/watch:
+        code: bash build-scripts/test.sh
+        reload: true

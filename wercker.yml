@@ -4,9 +4,24 @@ box:
 dev:
   steps:
     - pip-install:
+        packages_list: "virtualenv"
+        requirements_file: ""
+    - virtualenv:
+        virtualenv_location: $WERCKER_CACHE_DIR/venv
+    - pip-install:
         requirements_file: "build-scripts/build-requirements.txt"
     - pip-install:
         requirements_file: ""
     - internal/watch:
-        code: bash build-scripts/test.sh
+        code: |
+            PKG_NAME=$(python setup.py --provides)
+            cp ./build-scripts/coveragerc .coveragerc
+            pep8 ${PKG_NAME}
+            pyflakes ${PKG_NAME}
+            ./build-scripts/custom_pylint.py --rcfile=build-scripts/pylintrc ${PKG_NAME}
+            nosetests \
+                --with-coverage \
+                --with-doctest \
+                --cover-package=${PKG_NAME} \
+                --cover-min-percentage=100
         reload: true

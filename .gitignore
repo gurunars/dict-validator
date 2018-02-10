@@ -1,3 +1,8 @@
+.coveragerc
+coverage.xml
+coverage
+gen-docs
+nosetests.xml
 deploy_key
 build
 dist

@@ -23,10 +23,10 @@ class Phone(String):
 
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, **kwargs):
         super(Phone, self).__init__(
             r"^\+[0-9]{1,4}[ 0-9]+$", "phone",
-            *args, **kwargs)
+            **kwargs)
 
     def deserialize(self, value):
         return value.replace(" ", "")

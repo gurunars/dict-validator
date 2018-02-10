@@ -48,7 +48,7 @@ class PascalCase(String):
     [(['field'], 'Did not match Regexp(pascal-case)')]
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, **kwargs):
         super(PascalCase, self).__init__(
             REGEXP,
-            "pascal-case", *args, **kwargs)
+            "pascal-case", **kwargs)

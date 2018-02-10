@@ -36,13 +36,14 @@ class Choice(Field):
 
     """
 
-    def __init__(self, choices, *args, **kwargs):
-        super(Choice, self).__init__(*args, **kwargs)
+    def __init__(self, choices, **kwargs):
+        super(Choice, self).__init__(**kwargs)
         self._choices = choices
 
     def _validate(self, value):
         if value not in self._choices:
             return "Not among the choices"
+        return None
 
     def _describe(self):
         return {

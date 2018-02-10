@@ -24,3 +24,4 @@ class Boolean(Field):
     def _validate(self, value):
         if not isinstance(value, bool):
             return "Not a boolean"
+        return None

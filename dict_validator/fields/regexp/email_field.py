@@ -76,14 +76,14 @@ class Email(String):
 
     """
 
-    def __init__(self, domain=None, *args, **kwargs):
+    def __init__(self, domain=None, **kwargs):
         if domain:
             domain = re.escape(domain)
         else:
             domain = r"(?:[a-zA-Z0-9-]+\.)+[a-z]{2,}"
         super(Email, self).__init__(
             r"^[a-zA-Z0-9._%+-]+@{}$".format(domain),
-            "email", *args, **kwargs)
+            "email", **kwargs)
 
     def deserialize(self, value):
         # Make sure that the domain name is always in lower case

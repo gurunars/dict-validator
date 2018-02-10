@@ -102,7 +102,7 @@ class Url(String):
     """
 
     def __init__(self, protocol=None, domain=None, port=None,
-                 path=None, *args, **kwargs):
+                 path=None, **kwargs):
         if port:
             port = ":" + str(port)
         else:
@@ -122,4 +122,4 @@ class Url(String):
         pattern = r"^{protocol}{domain}{port}{path}{query}{hash}$".format(
             protocol=protocol, domain=domain, port=port, path=path,
             query=QUERY, hash=HASH)
-        super(Url, self).__init__(pattern, "url", *args, **kwargs)
+        super(Url, self).__init__(pattern, "url", **kwargs)

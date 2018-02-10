@@ -58,8 +58,8 @@ class String(Field):
 
     """
 
-    def __init__(self, regexp=None, metavar=None, *args, **kwargs):
-        super(String, self).__init__(*args, **kwargs)
+    def __init__(self, regexp=None, metavar=None, **kwargs):
+        super(String, self).__init__(**kwargs)
         self._regexp = re.compile(regexp, re.UNICODE) if regexp else None
         self._metavar = metavar or ""
 
@@ -69,6 +69,7 @@ class String(Field):
         if self._regexp and not self._regexp.match(value):
             return "Did not match Regexp({})".format(self._metavar or
                                                      self._regexp.pattern)
+        return None
 
     def _describe(self):
         return {

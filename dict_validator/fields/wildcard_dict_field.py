@@ -2,6 +2,7 @@ from dict_validator import Field
 
 
 class Any(Field):
+    """ Wildcard value. """
 
     def _validate(self, value):
         pass
@@ -96,8 +97,8 @@ class WildcardDict(Field):
 
     """
 
-    def __init__(self, key_schema=None, value_schema=None, *args, **kwargs):
-        super(WildcardDict, self).__init__(*args, **kwargs)
+    def __init__(self, key_schema=None, value_schema=None, **kwargs):
+        super(WildcardDict, self).__init__(**kwargs)
         self._key_schema = key_schema or Any()
         self._value_schema = value_schema or Any()
 

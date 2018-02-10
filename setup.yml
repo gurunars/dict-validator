@@ -1,0 +1,17 @@
+name: dict-validator
+author: Anton Berezin
+author_email: gurunars@gmail.com
+description: A library for structural data validation
+keywords: serialization validation
+url: https://gurunars.github.io/dict-validator
+license: Apache-2
+classifiers:
+  - 'Development Status :: 5 - Production/Stable'
+  - 'Intended Audience :: Developers'
+  - 'Topic :: Software Development :: Libraries :: Python Modules'
+  - 'License :: OSI Approved :: Apache Software License'
+  - 'Programming Language :: Python :: 3'
+project_urls:
+  - 'Bug Tracker = https://github.com/gurunars/dict-validator/issues'
+  - 'Documentation = https://gurunars.github.io/dict-validator'
+  - 'Source Code = https://github.com/gurunars/dict-validator'

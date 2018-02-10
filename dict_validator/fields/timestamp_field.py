@@ -111,8 +111,8 @@ class Timestamp(Field):
         value = "%H:%M:%S.%f"
         granulate = datetime.datetime.time
 
-    def __init__(self, granularity=DateTime, *args, **kwargs):
-        super(Timestamp, self).__init__(*args, **kwargs)
+    def __init__(self, granularity=DateTime, **kwargs):
+        super(Timestamp, self).__init__(**kwargs)
         self._granularity = granularity
 
     def _validate(self, value):
@@ -120,6 +120,7 @@ class Timestamp(Field):
             return "Not a string"
         try:
             datetime.datetime.strptime(value, self._granularity.value)
+            return None
         except ValueError:
             return "Not a valid {}".format(self._granularity.__name__)
 

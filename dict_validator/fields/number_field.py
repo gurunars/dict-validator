@@ -49,8 +49,8 @@ class Number(Field):
     """
 
     # pylint: disable=redefined-builtin
-    def __init__(self, min=None, max=None, can_be_float=True, *args, **kwargs):
-        super(Number, self).__init__(*args, **kwargs)
+    def __init__(self, min=None, max=None, can_be_float=True, **kwargs):
+        super(Number, self).__init__(**kwargs)
         self._min = min
         self._max = max
         self._can_be_float = can_be_float
@@ -68,6 +68,7 @@ class Number(Field):
 
         if self._max is not None and value > self._max:
             return "Too large"
+        return None
 
     def _describe(self):
         return {

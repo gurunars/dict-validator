@@ -54,10 +54,10 @@ class Name(String):
 
     """
 
-    def __init__(self, lowercase_allowed=False, *args, **kwargs):
+    def __init__(self, lowercase_allowed=False, **kwargs):
         super(Name, self).__init__(
             r"^\w+( \w+)*$",
-            "name", *args, **kwargs)
+            "name", **kwargs)
         self._lowercase_allowed = lowercase_allowed
 
     def _validate(self, value):
@@ -70,3 +70,4 @@ class Name(String):
                     return "One of the name parts is not capitalized"
         if re.search(r"[0-9_]+", value):
             return "Name can't contain digits or underscores"
+        return None

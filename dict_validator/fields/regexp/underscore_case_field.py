@@ -1,6 +1,8 @@
 from dict_validator.fields import String
 
 
+# code duplication is here for readability of a regex
+# pylint: disable=duplicate-code
 REGEXP = "".join([
     r"^",
     r"([a-z]{1}[a-z0-9]+)",
@@ -60,7 +62,7 @@ class UnderscoreCase(String):
     [(['field'], 'Did not match Regexp(underscore-case)')]
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, **kwargs):
         super(UnderscoreCase, self).__init__(
             REGEXP,
-            "underscore-case", *args, **kwargs)
+            "underscore-case", **kwargs)

@@ -30,7 +30,7 @@ class Slug(String):
 
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, **kwargs):
         super(Slug, self).__init__(
             r"^[a-z0-9]+(-[a-z0-9]+)*$",
-            "slug", *args, **kwargs)
+            "slug", **kwargs)

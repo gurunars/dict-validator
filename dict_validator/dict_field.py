@@ -49,17 +49,17 @@ class Dict(Field):
             for (child_path, description) in subschema.describe():
                 yield ([key] + child_path, description)
 
-    def serialize(self, payload_object):
+    def serialize(self, value):
         ret_val = {}
         for key, subschema in self._get_fields():
-            val = getattr(payload_object, key, None)
+            val = getattr(value, key, None)
             ret_val[key] = None if val is None else subschema.serialize(val)
         return ret_val
 
-    def deserialize(self, payload_dict):
+    def deserialize(self, value):
         ret_val = self._schema()
         for key, subschema in self._get_fields():
-            val = payload_dict.get(key, None)
+            val = value.get(key, None)
             setattr(ret_val, key,
                     None if val is None else subschema.deserialize(val))
         return ret_val

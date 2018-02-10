@@ -52,7 +52,7 @@ class CamelCase(String):
     [(['field'], 'Did not match Regexp(camel-case)')]
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, **kwargs):
         super(CamelCase, self).__init__(
             REGEXP,
-            "camel-case", *args, **kwargs)
+            "camel-case", **kwargs)

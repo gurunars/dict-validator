@@ -15,6 +15,7 @@ install:
 script:
   - make
   - twine upload dist/*
+  - bash github/publish-docs.sh
 branches:
   only:
   - master

@@ -1,3 +1,7 @@
+5.0.1
+
+    * Repackaging
+
 5.0.0
 
     * Dropped Field _type abstract property. Use class names.

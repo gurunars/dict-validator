@@ -14,10 +14,9 @@ before_install:
   - ssh-add ~/deploy_key
 install:
   - pip install twine
-script: make
-deploy:
+script:
+  - make
   - twine upload dist/*
-sudo: false
 branches:
   only:
   - master

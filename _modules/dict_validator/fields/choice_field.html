@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dict_validator.fields.choice_field &mdash; dict-validator  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="dict-validator  documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> dict-validator
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.0.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dict_validator.html">dict_validator package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dict-validator</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>dict_validator.fields.choice_field</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for dict_validator.fields.choice_field</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">Field</span>
+
+
+<div class="viewcode-block" id="Choice"><a class="viewcode-back" href="../../../dict_validator.fields.html#dict_validator.fields.Choice">[docs]</a><span class="k">class</span> <span class="nc">Choice</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Accept any type of input as long as it matches on of the choices</span>
+<span class="sd">    mentioned in the provided list.</span>
+
+<span class="sd">    :param choices: list of choices to match against</span>
+
+<span class="sd">    &gt;&gt;&gt; from dict_validator import validate, describe</span>
+
+<span class="sd">    &gt;&gt;&gt; class Schema:</span>
+<span class="sd">    ...     field = Choice(choices=[&quot;ONE&quot;, &quot;TWO&quot;, 3, 4])</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: &quot;ONE&quot;}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: 4}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: &quot;4&quot;}))</span>
+<span class="sd">    [([&#39;field&#39;], &#39;Not among the choices&#39;)]</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: 1}))</span>
+<span class="sd">    [([&#39;field&#39;], &#39;Not among the choices&#39;)]</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: &quot;FOUR&quot;}))</span>
+<span class="sd">    [([&#39;field&#39;], &#39;Not among the choices&#39;)]</span>
+
+<span class="sd">    &gt;&gt;&gt; from pprint import pprint</span>
+
+<span class="sd">    &gt;&gt;&gt; pprint(list(describe(Schema)))</span>
+<span class="sd">    [([], {&#39;type&#39;: &#39;Dict&#39;}),</span>
+<span class="sd">     ([&#39;field&#39;], {&#39;choices&#39;: [&#39;ONE&#39;, &#39;TWO&#39;, 3, 4], &#39;type&#39;: &#39;Choice&#39;})]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Choice</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_choices</span> <span class="o">=</span> <span class="n">choices</span>
+
+    <span class="k">def</span> <span class="nf">_validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choices</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Not among the choices&quot;</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_describe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choices</span></div>
+        <span class="p">}</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Anton Berezin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

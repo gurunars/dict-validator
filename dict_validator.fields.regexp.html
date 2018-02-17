@@ -1,0 +1,1240 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dict_validator.fields.regexp package &mdash; dict-validator  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="dict-validator  documentation" href="index.html"/>
+        <link rel="up" title="dict_validator.fields package" href="dict_validator.fields.html"/>
+        <link rel="prev" title="dict_validator.fields package" href="dict_validator.fields.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> dict-validator
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.0.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="dict_validator.html">dict_validator package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dict_validator.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="dict_validator.fields.html">dict_validator.fields package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="dict_validator.fields.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dict_validator.fields.html#module-dict_validator.fields.boolean_field">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dict_validator.html#module-dict_validator.dict_field">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dict-validator</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="dict_validator.html">dict_validator package</a> &raquo;</li>
+        
+          <li><a href="dict_validator.fields.html">dict_validator.fields package</a> &raquo;</li>
+        
+      <li>dict_validator.fields.regexp package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/dict_validator.fields.regexp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-dict_validator.fields.regexp">
+<span id="dict-validator-fields-regexp-package"></span><h1>dict_validator.fields.regexp package<a class="headerlink" href="#module-dict_validator.fields.regexp" title="Permalink to this headline">¶</a></h1>
+<p>This package contains most frequently used subclasses of
+<a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.String" title="dict_validator.fields.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.String</span></code></a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#dict_validator.fields.regexp.Email" title="dict_validator.fields.regexp.Email"><code class="xref py py-class docutils literal notranslate"><span class="pre">Email</span></code></a></li>
+<li><a class="reference internal" href="#dict_validator.fields.regexp.Phone" title="dict_validator.fields.regexp.Phone"><code class="xref py py-class docutils literal notranslate"><span class="pre">Phone</span></code></a></li>
+<li><a class="reference internal" href="#dict_validator.fields.regexp.Url" title="dict_validator.fields.regexp.Url"><code class="xref py py-class docutils literal notranslate"><span class="pre">Url</span></code></a></li>
+<li><a class="reference internal" href="#dict_validator.fields.regexp.Name" title="dict_validator.fields.regexp.Name"><code class="xref py py-class docutils literal notranslate"><span class="pre">Name</span></code></a></li>
+<li><a class="reference internal" href="#dict_validator.fields.regexp.Slug" title="dict_validator.fields.regexp.Slug"><code class="xref py py-class docutils literal notranslate"><span class="pre">Slug</span></code></a></li>
+<li><a class="reference internal" href="#dict_validator.fields.regexp.PascalCase" title="dict_validator.fields.regexp.PascalCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">PascalCase</span></code></a></li>
+<li><a class="reference internal" href="#dict_validator.fields.regexp.CamelCase" title="dict_validator.fields.regexp.CamelCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">CamelCase</span></code></a></li>
+<li><a class="reference internal" href="#dict_validator.fields.regexp.UnderscoreCase" title="dict_validator.fields.regexp.UnderscoreCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnderscoreCase</span></code></a></li>
+</ul>
+</div></blockquote>
+<dl class="class">
+<dt id="dict_validator.fields.regexp.Email">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.</code><code class="descname">Email</code><span class="sig-paren">(</span><em>domain=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/email_field.html#Email"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.Email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<p>Make sure that the input is a valid email.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>domain</strong> – string representing a desired domain name. e.g. “gmail.com”
+if not present matches any domain name</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span><span class="p">,</span> <span class="n">deserialize</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Email</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test@example.com&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test.foo@example.bla.com&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test123@examp123e.com&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test-dff@example-ff.com&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test</span><span class="si">%%</span><span class="s2">20dff@example-ff.com&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test+20dff@example-ff.com&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Missing domain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test@&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(email)&#39;)]</span>
+</pre></div>
+</div>
+<p>Missing beginning:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;@example-ff.com&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(email)&#39;)]</span>
+</pre></div>
+</div>
+<p>Wrong beginning:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;~~~@example.bla.com&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(email)&#39;)]</span>
+</pre></div>
+</div>
+<p>Wrong domain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test123@examp++e.com&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(email)&#39;)]</span>
+</pre></div>
+</div>
+<p>No &#64; char:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;fdfdfdgdg&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(email)&#39;)]</span>
+</pre></div>
+</div>
+<p>Specify a domain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Email</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;example.com&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test@example.com&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Wrong domain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test@not-example.com&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(email)&#39;)]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">deserialize</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;foobar@EXAMPLE.com&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">field</span>
+<span class="go">&#39;foobar@example.com&#39;</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="dict_validator.fields.regexp.Email.deserialize">
+<code class="descname">deserialize</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/email_field.html#Email.deserialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.Email.deserialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> – a payload sent over the wire</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a payload with Python specific data types</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="dict_validator.fields.regexp.Phone">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.</code><code class="descname">Phone</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/phone_field.html#Phone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.Phone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<p>Make sure that the input is a valid phone number.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span><span class="p">,</span> <span class="n">deserialize</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Phone</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;+358 807 12&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Has to start with a +</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;358 807 12&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(phone)&#39;)]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">deserialize</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;+358 807 12&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">field</span>
+<span class="go">&#39;+35880712&#39;</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="dict_validator.fields.regexp.Phone.deserialize">
+<code class="descname">deserialize</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/phone_field.html#Phone.deserialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.Phone.deserialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> – a payload sent over the wire</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a payload with Python specific data types</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="dict_validator.fields.regexp.Url">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.</code><code class="descname">Url</code><span class="sig-paren">(</span><em>protocol=None</em>, <em>domain=None</em>, <em>port=None</em>, <em>path=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/url_field.html#Url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.Url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<p>Simple pattern to match http or https URL.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>protocol</strong> – optional protocol spec (defaults to http[s])</li>
+<li><strong>domain</strong> – optional domain (defaults to a wildcard)</li>
+<li><strong>port</strong> – optional port (defaults to any number from 0 to 65535)</li>
+<li><strong>path</strong> – optional path (defaults to a wildcard)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span>
+</pre></div>
+</div>
+<p>By default a wildcard URL is matched.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Url</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;http://www.example.com/path-to-resource&quot;</span>
+<span class="gp">... </span>              <span class="s2">&quot;?foo-bar=bar-foo&amp;zoo=loo#fff-ggg&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>SSL:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.example.com?foo=bar#fff&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>With port:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;http://www.example.com:8080?foo=bar#fff&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>No protocol:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;www.example.com?foo=bar#fff&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Wrong protocol:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;bla://www.example.com?foo=bar#fff&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+</pre></div>
+</div>
+<p>No domain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;http://foo=bar#fff&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+</pre></div>
+</div>
+<p>It is possible to configure certain parts of the url to match specific
+values.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Url</span><span class="p">(</span><span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;ftp&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;example.com&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                     <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/foobar-zooloo&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;ftp://example.com:8080/foobar-zooloo&quot;</span>
+<span class="gp">... </span>              <span class="s2">&quot;?foo-bar=bar-foo&amp;zoo=loo#fff-ggg&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Wrong protocol:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;http://example.com/foobar-zooloo?ffff#dffdf&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+</pre></div>
+</div>
+<p>Wrong domain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;ftp://not-example.com/foobar-zooloo?ffff#dffdf&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+</pre></div>
+</div>
+<p>Wrong path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;ftp://example.com/zooloo?ffff#dffdf&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+</pre></div>
+</div>
+<p>Wrong port:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;ftp://example.com:100000/foobar-zooloo?ffff#dffdf&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="dict_validator.fields.regexp.Name">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.</code><code class="descname">Name</code><span class="sig-paren">(</span><em>lowercase_allowed=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/name_field.html#Name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.Name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<p>Human name represented with ASCII characters - e.g. John Smith</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lowercase_allowed</strong> – if True - the name may contain lowercase parts</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Name</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Expects one or more name parts delimited with space</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;John Smith&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Regexp values are allowed as well</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;John Smith Äjil&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;John??Smith!!&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(name)&#39;)]</span>
+</pre></div>
+</div>
+<p>Digits are not allowed</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;John Smith022&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &quot;Name can&#39;t contain digits or underscores&quot;)]</span>
+</pre></div>
+</div>
+<p>Underscores are not allowed either</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;John_Smith&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &quot;Name can&#39;t contain digits or underscores&quot;)]</span>
+</pre></div>
+</div>
+<p>By default each name part must be capitalized</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;John mcFault&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;One of the name parts is not capitalized&#39;)]</span>
+</pre></div>
+</div>
+<p>Non capitalized name parts can be enabled though</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Name</span><span class="p">(</span><span class="n">lowercase_allowed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;John mcFault&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="dict_validator.fields.regexp.Slug">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.</code><code class="descname">Slug</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/slug_field.html#Slug"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.Slug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<p>Lower case alphanumerics delimited with dashes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Slug</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;title-of-web-page&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Too many dashes</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;title--of-web-page&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(slug)&#39;)]</span>
+</pre></div>
+</div>
+<p>Starts with a dash</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;-title-of-web-page&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(slug)&#39;)]</span>
+</pre></div>
+</div>
+<p>Ends with a dash</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;title-of-web-page-&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(slug)&#39;)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="dict_validator.fields.regexp.PascalCase">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.</code><code class="descname">PascalCase</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/pascal_case_field.html#PascalCase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.PascalCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">PascalCase</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;ValueCapitalized&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Can contain digits</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;ValueCapitalizedWith012&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Can’t contain non alphanumerics</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;Wrong_Value&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(pascal-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Can’t start with an int</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;012WrongValue&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(pascal-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Cant’t start with a lowercase</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;wrongValue&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(pascal-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Each part should be at least two symbols long (here - 1 - V)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;WrongValueV&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(pascal-case)&#39;)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="dict_validator.fields.regexp.CamelCase">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.</code><code class="descname">CamelCase</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/camel_case_field.html#CamelCase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.CamelCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">CamelCase</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Can contain digits</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;valueCapitalizedWith012&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Can’t contain non alphanumerics</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;wrong_Value&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(camel-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Can’t start with an int</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;012wrongValue&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(camel-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Must start with a lowercase</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;WrongValue&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(camel-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Each part should be at least two symbols long (here - 1 - V)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;wrongValueV&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(camel-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Even the first part should contain at least two symbols</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;wRongValueV&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(camel-case)&#39;)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="dict_validator.fields.regexp.UnderscoreCase">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.</code><code class="descname">UnderscoreCase</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/underscore_case_field.html#UnderscoreCase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.UnderscoreCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">UnderscoreCase</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;value_with_parts&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Can contain digits</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;value_with_12&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Can’t contain upper case chars</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;wrong_Value&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(underscore-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Can’t start with an int</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;012wrong_value&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(underscore-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Can’t start with an underscore</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;_wrong_value&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(underscore-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Can’t end with an underscore</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;wrong_value_&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(underscore-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Each part should be at least two symbols long (here - 1 - V)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;wrong_v&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(underscore-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Even the first part should contain at least two symbols</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;w_rong_value&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(underscore-case)&#39;)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="module-dict_validator.fields.regexp.camel_case_field">
+<span id="submodules"></span><h2>Submodules<a class="headerlink" href="#module-dict_validator.fields.regexp.camel_case_field" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="dict_validator.fields.regexp.camel_case_field.CamelCase">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.camel_case_field.</code><code class="descname">CamelCase</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/camel_case_field.html#CamelCase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.camel_case_field.CamelCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">CamelCase</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Can contain digits</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;valueCapitalizedWith012&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Can’t contain non alphanumerics</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;wrong_Value&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(camel-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Can’t start with an int</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;012wrongValue&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(camel-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Must start with a lowercase</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;WrongValue&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(camel-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Each part should be at least two symbols long (here - 1 - V)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;wrongValueV&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(camel-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Even the first part should contain at least two symbols</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;wRongValueV&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(camel-case)&#39;)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<span class="target" id="module-dict_validator.fields.regexp.email_field"></span><dl class="class">
+<dt id="dict_validator.fields.regexp.email_field.Email">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.email_field.</code><code class="descname">Email</code><span class="sig-paren">(</span><em>domain=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/email_field.html#Email"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.email_field.Email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<p>Make sure that the input is a valid email.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>domain</strong> – string representing a desired domain name. e.g. “gmail.com”
+if not present matches any domain name</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span><span class="p">,</span> <span class="n">deserialize</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Email</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test@example.com&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test.foo@example.bla.com&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test123@examp123e.com&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test-dff@example-ff.com&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test</span><span class="si">%%</span><span class="s2">20dff@example-ff.com&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test+20dff@example-ff.com&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Missing domain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test@&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(email)&#39;)]</span>
+</pre></div>
+</div>
+<p>Missing beginning:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;@example-ff.com&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(email)&#39;)]</span>
+</pre></div>
+</div>
+<p>Wrong beginning:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;~~~@example.bla.com&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(email)&#39;)]</span>
+</pre></div>
+</div>
+<p>Wrong domain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test123@examp++e.com&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(email)&#39;)]</span>
+</pre></div>
+</div>
+<p>No &#64; char:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;fdfdfdgdg&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(email)&#39;)]</span>
+</pre></div>
+</div>
+<p>Specify a domain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Email</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s2">&quot;example.com&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test@example.com&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Wrong domain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;test@not-example.com&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(email)&#39;)]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">deserialize</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;foobar@EXAMPLE.com&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">field</span>
+<span class="go">&#39;foobar@example.com&#39;</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="dict_validator.fields.regexp.email_field.Email.deserialize">
+<code class="descname">deserialize</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/email_field.html#Email.deserialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.email_field.Email.deserialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> – a payload sent over the wire</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a payload with Python specific data types</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-dict_validator.fields.regexp.name_field"></span><dl class="class">
+<dt id="dict_validator.fields.regexp.name_field.Name">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.name_field.</code><code class="descname">Name</code><span class="sig-paren">(</span><em>lowercase_allowed=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/name_field.html#Name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.name_field.Name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<p>Human name represented with ASCII characters - e.g. John Smith</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lowercase_allowed</strong> – if True - the name may contain lowercase parts</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Name</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Expects one or more name parts delimited with space</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;John Smith&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Regexp values are allowed as well</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;John Smith Äjil&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;John??Smith!!&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(name)&#39;)]</span>
+</pre></div>
+</div>
+<p>Digits are not allowed</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;John Smith022&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &quot;Name can&#39;t contain digits or underscores&quot;)]</span>
+</pre></div>
+</div>
+<p>Underscores are not allowed either</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;John_Smith&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &quot;Name can&#39;t contain digits or underscores&quot;)]</span>
+</pre></div>
+</div>
+<p>By default each name part must be capitalized</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;John mcFault&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;One of the name parts is not capitalized&#39;)]</span>
+</pre></div>
+</div>
+<p>Non capitalized name parts can be enabled though</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Name</span><span class="p">(</span><span class="n">lowercase_allowed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;John mcFault&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<span class="target" id="module-dict_validator.fields.regexp.pascal_case_field"></span><dl class="class">
+<dt id="dict_validator.fields.regexp.pascal_case_field.PascalCase">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.pascal_case_field.</code><code class="descname">PascalCase</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/pascal_case_field.html#PascalCase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.pascal_case_field.PascalCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">PascalCase</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;ValueCapitalized&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Can contain digits</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;ValueCapitalizedWith012&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Can’t contain non alphanumerics</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;Wrong_Value&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(pascal-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Can’t start with an int</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;012WrongValue&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(pascal-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Cant’t start with a lowercase</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;wrongValue&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(pascal-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Each part should be at least two symbols long (here - 1 - V)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;WrongValueV&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(pascal-case)&#39;)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<span class="target" id="module-dict_validator.fields.regexp.phone_field"></span><dl class="class">
+<dt id="dict_validator.fields.regexp.phone_field.Phone">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.phone_field.</code><code class="descname">Phone</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/phone_field.html#Phone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.phone_field.Phone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<p>Make sure that the input is a valid phone number.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span><span class="p">,</span> <span class="n">deserialize</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Phone</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;+358 807 12&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Has to start with a +</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;358 807 12&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(phone)&#39;)]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">deserialize</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;+358 807 12&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">field</span>
+<span class="go">&#39;+35880712&#39;</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="dict_validator.fields.regexp.phone_field.Phone.deserialize">
+<code class="descname">deserialize</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/phone_field.html#Phone.deserialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.phone_field.Phone.deserialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> – a payload sent over the wire</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a payload with Python specific data types</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-dict_validator.fields.regexp.slug_field"></span><dl class="class">
+<dt id="dict_validator.fields.regexp.slug_field.Slug">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.slug_field.</code><code class="descname">Slug</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/slug_field.html#Slug"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.slug_field.Slug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<p>Lower case alphanumerics delimited with dashes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Slug</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;title-of-web-page&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Too many dashes</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;title--of-web-page&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(slug)&#39;)]</span>
+</pre></div>
+</div>
+<p>Starts with a dash</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;-title-of-web-page&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(slug)&#39;)]</span>
+</pre></div>
+</div>
+<p>Ends with a dash</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;title-of-web-page-&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(slug)&#39;)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<span class="target" id="module-dict_validator.fields.regexp.underscore_case_field"></span><dl class="class">
+<dt id="dict_validator.fields.regexp.underscore_case_field.UnderscoreCase">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.underscore_case_field.</code><code class="descname">UnderscoreCase</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/underscore_case_field.html#UnderscoreCase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.underscore_case_field.UnderscoreCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">UnderscoreCase</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;value_with_parts&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Can contain digits</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;value_with_12&#39;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Can’t contain upper case chars</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;wrong_Value&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(underscore-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Can’t start with an int</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;012wrong_value&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(underscore-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Can’t start with an underscore</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;_wrong_value&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(underscore-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Can’t end with an underscore</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;wrong_value_&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(underscore-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Each part should be at least two symbols long (here - 1 - V)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;wrong_v&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(underscore-case)&#39;)]</span>
+</pre></div>
+</div>
+<p>Even the first part should contain at least two symbols</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s1">&#39;w_rong_value&#39;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(underscore-case)&#39;)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<span class="target" id="module-dict_validator.fields.regexp.url_field"></span><dl class="class">
+<dt id="dict_validator.fields.regexp.url_field.Url">
+<em class="property">class </em><code class="descclassname">dict_validator.fields.regexp.url_field.</code><code class="descname">Url</code><span class="sig-paren">(</span><em>protocol=None</em>, <em>domain=None</em>, <em>port=None</em>, <em>path=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dict_validator/fields/regexp/url_field.html#Url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dict_validator.fields.regexp.url_field.Url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="dict_validator.fields.html#dict_validator.fields.string_field.String" title="dict_validator.fields.string_field.String"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict_validator.fields.string_field.String</span></code></a></p>
+<p>Simple pattern to match http or https URL.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>protocol</strong> – optional protocol spec (defaults to http[s])</li>
+<li><strong>domain</strong> – optional domain (defaults to a wildcard)</li>
+<li><strong>port</strong> – optional port (defaults to any number from 0 to 65535)</li>
+<li><strong>path</strong> – optional path (defaults to a wildcard)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">validate</span>
+</pre></div>
+</div>
+<p>By default a wildcard URL is matched.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Url</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;http://www.example.com/path-to-resource&quot;</span>
+<span class="gp">... </span>              <span class="s2">&quot;?foo-bar=bar-foo&amp;zoo=loo#fff-ggg&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>SSL:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.example.com?foo=bar#fff&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>With port:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;http://www.example.com:8080?foo=bar#fff&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>No protocol:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;www.example.com?foo=bar#fff&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Wrong protocol:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;bla://www.example.com?foo=bar#fff&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+</pre></div>
+</div>
+<p>No domain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;http://foo=bar#fff&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+</pre></div>
+</div>
+<p>It is possible to configure certain parts of the url to match specific
+values.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Schema</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">field</span> <span class="o">=</span> <span class="n">Url</span><span class="p">(</span><span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;ftp&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;example.com&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                     <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/foobar-zooloo&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;ftp://example.com:8080/foobar-zooloo&quot;</span>
+<span class="gp">... </span>              <span class="s2">&quot;?foo-bar=bar-foo&amp;zoo=loo#fff-ggg&quot;</span><span class="p">}))</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Wrong protocol:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;http://example.com/foobar-zooloo?ffff#dffdf&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+</pre></div>
+</div>
+<p>Wrong domain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;ftp://not-example.com/foobar-zooloo?ffff#dffdf&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+</pre></div>
+</div>
+<p>Wrong path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;ftp://example.com/zooloo?ffff#dffdf&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+</pre></div>
+</div>
+<p>Wrong port:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">validate</span><span class="p">(</span><span class="n">Schema</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;ftp://example.com:100000/foobar-zooloo?ffff#dffdf&quot;</span><span class="p">}))</span>
+<span class="go">[([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="dict_validator.fields.html" class="btn btn-neutral" title="dict_validator.fields package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Anton Berezin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

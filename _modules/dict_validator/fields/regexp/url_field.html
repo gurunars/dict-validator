@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dict_validator.fields.regexp.url_field &mdash; dict-validator  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="dict-validator  documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> dict-validator
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.0.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dict_validator.html">dict_validator package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">dict-validator</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>dict_validator.fields.regexp.url_field</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for dict_validator.fields.regexp.url_field</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">dict_validator.fields</span> <span class="k">import</span> <span class="n">String</span>
+
+
+<span class="n">PROTOCOL</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(https?:\/\/)?&quot;</span>
+<span class="n">DOMAIN</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;([\da-z\.-]+\.)+[a-z]{2,8}&quot;</span>
+<span class="n">PATH</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\/[\/\w \.-]*)?&quot;</span>
+<span class="n">QUERY</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\?[\/\w= \._&amp;-]*)?&quot;</span>
+<span class="n">HASH</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(#[\/\w= \._&amp;#-]*)?&quot;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(:([0-9]{1,4}|[1-5][0-9]</span><span class="si">{4}</span><span class="s2">|6[0-4][0-9]</span><span class="si">{3}</span><span class="s2">|&quot;</span> <span class="o">+</span> \
+       <span class="sa">r</span><span class="s2">&quot;65[0-4][0-9]</span><span class="si">{2}</span><span class="s2">|655[0-2][0-9]|6553[0-5]))?&quot;</span>
+
+
+<div class="viewcode-block" id="Url"><a class="viewcode-back" href="../../../../dict_validator.fields.regexp.html#dict_validator.fields.regexp.Url">[docs]</a><span class="k">class</span> <span class="nc">Url</span><span class="p">(</span><span class="n">String</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simple pattern to match http or https URL.</span>
+
+<span class="sd">    :param protocol: optional protocol spec (defaults to http[s])</span>
+<span class="sd">    :param domain: optional domain (defaults to a wildcard)</span>
+<span class="sd">    :param port: optional port (defaults to any number from 0 to 65535)</span>
+<span class="sd">    :param path: optional path (defaults to a wildcard)</span>
+
+<span class="sd">    &gt;&gt;&gt; from dict_validator import validate</span>
+
+<span class="sd">    By default a wildcard URL is matched.</span>
+
+<span class="sd">    &gt;&gt;&gt; class Schema:</span>
+<span class="sd">    ...     field = Url()</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema,</span>
+<span class="sd">    ...     {&quot;field&quot;: &quot;http://www.example.com/path-to-resource&quot;</span>
+<span class="sd">    ...               &quot;?foo-bar=bar-foo&amp;zoo=loo#fff-ggg&quot;}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    SSL:</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema,</span>
+<span class="sd">    ...     {&quot;field&quot;: &quot;https://www.example.com?foo=bar#fff&quot;}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    With port:</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema,</span>
+<span class="sd">    ...     {&quot;field&quot;: &quot;http://www.example.com:8080?foo=bar#fff&quot;}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    No protocol:</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema,</span>
+<span class="sd">    ...     {&quot;field&quot;: &quot;www.example.com?foo=bar#fff&quot;}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    Wrong protocol:</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema,</span>
+<span class="sd">    ...     {&quot;field&quot;: &quot;bla://www.example.com?foo=bar#fff&quot;}))</span>
+<span class="sd">    [([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+
+<span class="sd">    No domain:</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema,</span>
+<span class="sd">    ...     {&quot;field&quot;: &quot;http://foo=bar#fff&quot;}))</span>
+<span class="sd">    [([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+
+<span class="sd">    It is possible to configure certain parts of the url to match specific</span>
+<span class="sd">    values.</span>
+
+<span class="sd">    &gt;&gt;&gt; class Schema:</span>
+<span class="sd">    ...     field = Url(protocol=&quot;ftp&quot;, domain=&quot;example.com&quot;,</span>
+<span class="sd">    ...                      path=&quot;/foobar-zooloo&quot;, port=8080)</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema,</span>
+<span class="sd">    ...     {&quot;field&quot;: &quot;ftp://example.com:8080/foobar-zooloo&quot;</span>
+<span class="sd">    ...               &quot;?foo-bar=bar-foo&amp;zoo=loo#fff-ggg&quot;}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    Wrong protocol:</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema,</span>
+<span class="sd">    ...     {&quot;field&quot;: &quot;http://example.com/foobar-zooloo?ffff#dffdf&quot;}))</span>
+<span class="sd">    [([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+
+<span class="sd">    Wrong domain:</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema,</span>
+<span class="sd">    ...     {&quot;field&quot;: &quot;ftp://not-example.com/foobar-zooloo?ffff#dffdf&quot;}))</span>
+<span class="sd">    [([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+
+<span class="sd">    Wrong path:</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema,</span>
+<span class="sd">    ...     {&quot;field&quot;: &quot;ftp://example.com/zooloo?ffff#dffdf&quot;}))</span>
+<span class="sd">    [([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+
+<span class="sd">    Wrong port:</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema,</span>
+<span class="sd">    ...     {&quot;field&quot;: &quot;ftp://example.com:100000/foobar-zooloo?ffff#dffdf&quot;}))</span>
+<span class="sd">    [([&#39;field&#39;], &#39;Did not match Regexp(url)&#39;)]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">port</span><span class="p">:</span>
+            <span class="n">port</span> <span class="o">=</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">port</span> <span class="o">=</span> <span class="n">PORT</span>
+        <span class="k">if</span> <span class="n">protocol</span><span class="p">:</span>
+            <span class="n">protocol</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">protocol</span> <span class="o">+</span> <span class="s2">&quot;://&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">protocol</span> <span class="o">=</span> <span class="n">PROTOCOL</span>
+        <span class="k">if</span> <span class="n">domain</span><span class="p">:</span>
+            <span class="n">domain</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">domain</span> <span class="o">=</span> <span class="n">DOMAIN</span>
+        <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">PATH</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;^</span><span class="si">{protocol}{domain}{port}{path}{query}{hash}</span><span class="s2">$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">protocol</span><span class="o">=</span><span class="n">protocol</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+            <span class="n">query</span><span class="o">=</span><span class="n">QUERY</span><span class="p">,</span> <span class="nb">hash</span><span class="o">=</span><span class="n">HASH</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Url</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Anton Berezin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

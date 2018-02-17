@@ -1,0 +1,595 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dict_validator.helpers &mdash; dict-validator  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="dict-validator  documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> dict-validator
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.0.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dict_validator.html">dict_validator package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">dict-validator</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>dict_validator.helpers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for dict_validator.helpers</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
+
+<span class="kn">from</span> <span class="nn">.dict_field</span> <span class="k">import</span> <span class="n">Dict</span>
+
+
+<span class="k">def</span> <span class="nf">_wrap_schema</span><span class="p">(</span><span class="n">schema</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Dict</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="n">schema</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">,</span>
+        <span class="n">schema</span><span class="o">=</span><span class="n">schema</span>
+    <span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="k">else</span> <span class="n">schema</span>
+
+
+<div class="viewcode-block" id="validate"><a class="viewcode-back" href="../../dict_validator.html#dict_validator.validate">[docs]</a><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validate value again a given schema.</span>
+
+<span class="sd">    :param schema: a class representing the structure to be used for validation</span>
+<span class="sd">    :param value: a dict</span>
+<span class="sd">    :yield: (path, erro_msg),</span>
+<span class="sd">        e.g ([&quot;parent&quot;, &quot;child&quot;], &quot;Error message&quot;)</span>
+
+<span class="sd">    &gt;&gt;&gt; from dict_validator import Field, List, Dict</span>
+
+<span class="sd">    To report a single error _validate method of a field subclass must</span>
+<span class="sd">    return a string description of the problem.</span>
+
+<span class="sd">    &gt;&gt;&gt; class SampleOnly(Field):</span>
+<span class="sd">    ...</span>
+<span class="sd">    ...     def _validate(self, value):</span>
+<span class="sd">    ...         if value != &quot;sample&quot;:</span>
+<span class="sd">    ...             return &quot;Not a sample&quot;</span>
+
+<span class="sd">    &gt;&gt;&gt; class Schema:</span>
+<span class="sd">    ...     field = SampleOnly()</span>
+
+<span class="sd">    If there are no problems - nothing is yielded.</span>
+<span class="sd">    Note: validate function is a generator - thus it has to be converted</span>
+<span class="sd">    to a list explicitly.</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: &quot;sample&quot;}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    Payload must be a dict.</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, &quot;NOT A DICT&quot;))</span>
+<span class="sd">    [([], &#39;Not a dict&#39;)]</span>
+
+<span class="sd">    If there are problems - a collection of tuples is yielded.</span>
+<span class="sd">    The first element of a tuple is a list representing an absolute path</span>
+<span class="sd">    to the field.</span>
+<span class="sd">    The second element is a string with a description of the problem.</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: &quot;not sample&quot;}))</span>
+<span class="sd">    [([&#39;field&#39;], &#39;Not a sample&#39;)]</span>
+
+<span class="sd">    By default all fields are required</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {}))</span>
+<span class="sd">    [([], &#39;Key &quot;field&quot; is missing&#39;)]</span>
+
+<span class="sd">    By design no extra fields are allowed - payload must be strictly specified.</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: &quot;sample&quot;, &quot;unknown_field&quot;: &quot;sample&quot;}))</span>
+<span class="sd">    [([], &#39;Unkown fields: unknown_field&#39;)]</span>
+
+<span class="sd">    Optional fields are marked via required=False parameter.</span>
+<span class="sd">    This parameter is available for any field and its behaviour is uniform.</span>
+
+<span class="sd">    &gt;&gt;&gt; class Schema:</span>
+<span class="sd">    ...     field = SampleOnly(required=False)</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: &quot;sample&quot;}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: &quot;not sample&quot;}))</span>
+<span class="sd">    [([&#39;field&#39;], &#39;Not a sample&#39;)]</span>
+
+<span class="sd">    If optional field is missing - no error is reported.</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    Alternative way to report errors is to yield them.</span>
+<span class="sd">    It is a good idea if there is a need to validate multiple aspects</span>
+<span class="sd">    of the input value.</span>
+
+<span class="sd">    &gt;&gt;&gt; class WithYieldedError(Field):</span>
+<span class="sd">    ...</span>
+<span class="sd">    ...     def _validate(self, value):</span>
+<span class="sd">    ...         yield &quot;Error 1&quot;</span>
+<span class="sd">    ...         yield &quot;Error 2&quot;</span>
+
+<span class="sd">    &gt;&gt;&gt; class Schema:</span>
+<span class="sd">    ...     field = WithYieldedError()</span>
+
+<span class="sd">    Each error has its own unique error tuple even if the errors originate</span>
+<span class="sd">    from the same field.</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: &quot;sample&quot;}))</span>
+<span class="sd">    [([&#39;field&#39;], &#39;Error 1&#39;), ([&#39;field&#39;], &#39;Error 2&#39;)]</span>
+
+<span class="sd">    Nested structures can be described using a Dict field.</span>
+<span class="sd">    This field requires a reference to the schema specifying a nested</span>
+<span class="sd">    structure.</span>
+
+<span class="sd">    &gt;&gt;&gt; class Child:</span>
+<span class="sd">    ...     other_field = SampleOnly()</span>
+
+<span class="sd">    &gt;&gt;&gt; class Parent:</span>
+<span class="sd">    ...     child = Dict(Child)</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Parent, {&quot;child&quot;: {&quot;other_field&quot;: &quot;sample&quot;}}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    The absolute path to the error includes all the nodes of the structure&#39;s</span>
+<span class="sd">    tree.</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Parent, {&quot;child&quot;: {&quot;other_field&quot;: &quot;not sample&quot;}}))</span>
+<span class="sd">    [([&#39;child&#39;, &#39;other_field&#39;], &#39;Not a sample&#39;)]</span>
+
+<span class="sd">    To represent collections of data (aka lists) a List should be used.</span>
+<span class="sd">    The field requires an instance of some other field as its first argument.</span>
+
+<span class="sd">    &gt;&gt;&gt; class Schema:</span>
+<span class="sd">    ...     field = List(SampleOnly())</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: &quot;NOT A LIST&quot;}))</span>
+<span class="sd">    [([&#39;field&#39;], &#39;Not a list&#39;)]</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: [&quot;sample&quot;]}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    If the problem is in individual item a path to the node includes</span>
+<span class="sd">    an integer index of the node.</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: [&quot;not sample&quot;, &quot;sample&quot;,</span>
+<span class="sd">    ...                                  &quot;not sample&quot;]}))</span>
+<span class="sd">    [([&#39;field&#39;, 0], &#39;Not a sample&#39;), ([&#39;field&#39;, 2], &#39;Not a sample&#39;)]</span>
+
+<span class="sd">    It is possible to have a sophisticated nesting using a combination of</span>
+<span class="sd">    list and dict fields.</span>
+
+<span class="sd">    &gt;&gt;&gt; class Child:</span>
+<span class="sd">    ...     other_field = SampleOnly()</span>
+
+<span class="sd">    &gt;&gt;&gt; class Parent:</span>
+<span class="sd">    ...     child = List(Dict(Child))</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Parent, {&quot;child&quot;: [{&quot;other_field&quot;: &quot;sample&quot;}]}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Parent, {&quot;child&quot;: [{&quot;other_field&quot;: &quot;not sample&quot;}]}))</span>
+<span class="sd">    [([&#39;child&#39;, 0, &#39;other_field&#39;], &#39;Not a sample&#39;)]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span></div>
+    <span class="k">return</span> <span class="n">_wrap_schema</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="serialize_errors"><a class="viewcode-back" href="../../dict_validator.html#dict_validator.serialize_errors">[docs]</a><span class="k">def</span> <span class="nf">serialize_errors</span><span class="p">(</span><span class="n">validation_results</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Transform a denormalized generator over the collection of errors</span>
+<span class="sd">    into a serializable normalized dict.</span>
+
+<span class="sd">    :param validation_generator: a collection of errors returned by</span>
+<span class="sd">                                 :func:`validate`</span>
+<span class="sd">    :return: dict with field paths as keys and lists of errors</span>
+<span class="sd">             corresponding to those paths as values</span>
+
+<span class="sd">    &gt;&gt;&gt; error_collection = iter([</span>
+<span class="sd">    ...     ([&#39;field&#39;, 0], &#39;Error #1&#39;),</span>
+<span class="sd">    ...     ([&#39;field&#39;, 2], &#39;Error #1&#39;),</span>
+<span class="sd">    ...     ([&#39;field&#39;, 2], &#39;Error #2&#39;)</span>
+<span class="sd">    ... ])</span>
+
+<span class="sd">    &gt;&gt;&gt; from pprint import pprint</span>
+
+<span class="sd">    &gt;&gt;&gt; pprint(serialize_errors(error_collection))</span>
+<span class="sd">    {&#39;field.0&#39;: [&#39;Error #1&#39;], &#39;field.2&#39;: [&#39;Error #1&#39;, &#39;Error #2&#39;]}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">return_value</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">validation_results</span><span class="p">:</span>
+        <span class="n">return_value</span><span class="p">[</span><span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">))]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">error</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">return_value</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="describe"><a class="viewcode-back" href="../../dict_validator.html#dict_validator.describe">[docs]</a><span class="k">def</span> <span class="nf">describe</span><span class="p">(</span><span class="n">schema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Describe a given schema.</span>
+
+<span class="sd">    Understands primitive, list and dict fields.</span>
+
+<span class="sd">    :param schema: a class representing the structure to be documented</span>
+<span class="sd">    :yield: (path, {...description...}),</span>
+<span class="sd">        e.g ([&quot;parent&quot;, &quot;child&quot;], {&quot;required&quot;: False})</span>
+
+<span class="sd">    &gt;&gt;&gt; from dict_validator import Field, List, Dict</span>
+
+<span class="sd">    Each custom field must be a Field subclass with _validate method</span>
+<span class="sd">    implemented.</span>
+
+<span class="sd">    See validate function for details.</span>
+
+<span class="sd">    &gt;&gt;&gt; class AnyValue(Field):</span>
+<span class="sd">    ...</span>
+<span class="sd">    ...     def _validate(self, value):</span>
+<span class="sd">    ...         pass</span>
+
+<span class="sd">    To document a field - pass a &quot;description&quot; parameter to the constructor.</span>
+<span class="sd">    The value must be a string.</span>
+<span class="sd">    The &quot;description&quot; can be added to any field.</span>
+
+<span class="sd">    &gt;&gt;&gt; class Child:</span>
+<span class="sd">    ...     items = List(AnyValue(&quot;AnyValue item&quot;),</span>
+<span class="sd">    ...                       description=&quot;A collection of important items&quot;)</span>
+
+<span class="sd">    &gt;&gt;&gt; class Parent:</span>
+<span class="sd">    ...     &#39;&#39;&#39;Schema docstring&#39;&#39;&#39;</span>
+<span class="sd">    ...</span>
+<span class="sd">    ...     ignored_field = &quot;Nothing&quot;</span>
+<span class="sd">    ...     child = Dict(Child, description=&quot;Dict child&quot;)</span>
+<span class="sd">    ...     plain_field = AnyValue(description=&quot;Pure string&quot;, required=False)</span>
+
+<span class="sd">    Since return value is a generator it has to be explicitly converted to</span>
+<span class="sd">    a list.</span>
+
+<span class="sd">    Note, when it comes to documenting the items of the list &quot;{N}&quot; string</span>
+<span class="sd">    is used to denote such a field.</span>
+
+<span class="sd">    Also note that a docstring of the schema class is transformed into</span>
+<span class="sd">    a description of the top-level schema.</span>
+
+<span class="sd">    &gt;&gt;&gt; from pprint import pprint</span>
+
+<span class="sd">    &gt;&gt;&gt; pprint(sorted(describe(Parent)), width=60)</span>
+<span class="sd">    [([], {&#39;description&#39;: &#39;Schema docstring&#39;, &#39;type&#39;: &#39;Dict&#39;}),</span>
+<span class="sd">     ([&#39;child&#39;], {&#39;description&#39;: &#39;Dict child&#39;, &#39;type&#39;: &#39;Dict&#39;}),</span>
+<span class="sd">     ([&#39;child&#39;, &#39;items&#39;],</span>
+<span class="sd">      {&#39;description&#39;: &#39;A collection of important items&#39;,</span>
+<span class="sd">       &#39;type&#39;: &#39;List&#39;}),</span>
+<span class="sd">     ([&#39;child&#39;, &#39;items&#39;, &#39;{N}&#39;],</span>
+<span class="sd">      {&#39;description&#39;: &#39;AnyValue item&#39;, &#39;type&#39;: &#39;AnyValue&#39;}),</span>
+<span class="sd">     ([&#39;plain_field&#39;],</span>
+<span class="sd">      {&#39;description&#39;: &#39;Pure string&#39;,</span>
+<span class="sd">       &#39;required&#39;: False,</span>
+<span class="sd">       &#39;type&#39;: &#39;AnyValue&#39;})]</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+    <span class="k">return</span> <span class="n">_wrap_schema</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="serialize"><a class="viewcode-back" href="../../dict_validator.html#dict_validator.serialize">[docs]</a><span class="k">def</span> <span class="nf">serialize</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Serialize a value before sending it over the wire.</span>
+
+<span class="sd">    Understands primitive, list and dict fields.</span>
+
+<span class="sd">    :param schema: a class representing the structure to be used for</span>
+<span class="sd">        serialization</span>
+<span class="sd">    :param value: a pythonic object</span>
+<span class="sd">    :return: a dict ready to be sent over the wire</span>
+
+<span class="sd">    &gt;&gt;&gt; from dict_validator import Field, List, Dict, serialize</span>
+
+<span class="sd">    Each custom field must be a Field should implement a serialize method</span>
+<span class="sd">    to enable value transformations by default the value is returned as is.</span>
+
+<span class="sd">    See Field docs for details</span>
+
+<span class="sd">    &gt;&gt;&gt; class AnyValue(Field):</span>
+<span class="sd">    ...</span>
+<span class="sd">    ...     def _validate(self, value):</span>
+<span class="sd">    ...         pass</span>
+<span class="sd">    ...</span>
+<span class="sd">    ...     def serialize(self, value):</span>
+<span class="sd">    ...         return &quot;SERIALIZED {}&quot;.format(super(AnyValue, self)</span>
+<span class="sd">    ...             .serialize(value))</span>
+
+<span class="sd">    &gt;&gt;&gt; class Child:</span>
+<span class="sd">    ...     items = List(AnyValue(&quot;String item&quot;),</span>
+<span class="sd">    ...                       description=&quot;A collection of important items&quot;)</span>
+
+<span class="sd">    &gt;&gt;&gt; class Parent:</span>
+<span class="sd">    ...     child = Dict(Child, description=&quot;Dict child&quot;)</span>
+<span class="sd">    ...     plain_field = AnyValue(description=&quot;Pure string&quot;,</span>
+<span class="sd">    ...                                 required=False)</span>
+
+<span class="sd">    In order to construct a tree of python objects to serialize it later one</span>
+<span class="sd">    just use a Namespace class from the standard library.</span>
+
+<span class="sd">    &gt;&gt;&gt; from argparse import Namespace</span>
+
+<span class="sd">    &gt;&gt;&gt; payload = Namespace(</span>
+<span class="sd">    ...     plain_field=&quot;OUTGOING&quot;,</span>
+<span class="sd">    ...     child=Namespace(</span>
+<span class="sd">    ...         items=[&quot;OUTGOING&quot;]</span>
+<span class="sd">    ...     )</span>
+<span class="sd">    ... )</span>
+
+<span class="sd">    &gt;&gt;&gt; from pprint import pprint</span>
+
+<span class="sd">    &gt;&gt;&gt; pprint(serialize(Parent, payload))</span>
+<span class="sd">    {&#39;child&#39;: {&#39;items&#39;: [&#39;SERIALIZED OUTGOING&#39;]},</span>
+<span class="sd">     &#39;plain_field&#39;: &#39;SERIALIZED OUTGOING&#39;}</span>
+
+<span class="sd">    When serializing optional fields the missing values are set to None.</span>
+
+<span class="sd">    &gt;&gt;&gt; class Schema:</span>
+<span class="sd">    ...     field = AnyValue(required=False)</span>
+
+<span class="sd">    &gt;&gt;&gt; serialize(Schema, {})</span>
+<span class="sd">    {&#39;field&#39;: None}</span>
+
+<span class="sd">    &quot;&quot;&quot;</span></div>
+    <span class="k">return</span> <span class="n">_wrap_schema</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="deserialize"><a class="viewcode-back" href="../../dict_validator.html#dict_validator.deserialize">[docs]</a><span class="k">def</span> <span class="nf">deserialize</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Deserialize a value after sending it over the wire into a pythonic object.</span>
+
+<span class="sd">    Understands primitive, list and dict fields.</span>
+
+<span class="sd">    :param schema: a class representing the structure to be used for</span>
+<span class="sd">        deserialization</span>
+<span class="sd">    :param value: a dict sent over the wire</span>
+<span class="sd">    :return: a pythonic object</span>
+
+<span class="sd">    &gt;&gt;&gt; from dict_validator import Field, List, Dict, deserialize</span>
+
+<span class="sd">    Each custom field must be a Field should implement a deserialize method</span>
+<span class="sd">    to enable value transformations by default the value is returned as is.</span>
+
+<span class="sd">    See Field docs for details</span>
+
+<span class="sd">    &gt;&gt;&gt; class AnyValue(Field):</span>
+<span class="sd">    ...</span>
+<span class="sd">    ...     def _validate(self, value):</span>
+<span class="sd">    ...         pass</span>
+<span class="sd">    ...</span>
+<span class="sd">    ...     def deserialize(self, value):</span>
+<span class="sd">    ...         return &quot;DESERIALIZED {}&quot;.format(super(AnyValue, self)</span>
+<span class="sd">    ...             .deserialize(value))</span>
+
+<span class="sd">    &gt;&gt;&gt; class Child:</span>
+<span class="sd">    ...     items = List(AnyValue(&quot;String item&quot;),</span>
+<span class="sd">    ...                       description=&quot;A collection of important items&quot;)</span>
+
+<span class="sd">    &gt;&gt;&gt; class Parent:</span>
+<span class="sd">    ...     child = Dict(Child, description=&quot;Dict child&quot;)</span>
+<span class="sd">    ...     plain_field = AnyValue(description=&quot;Pure string&quot;,</span>
+<span class="sd">    ...                                 required=False)</span>
+
+<span class="sd">    &gt;&gt;&gt; parent = deserialize(Parent, {</span>
+<span class="sd">    ...     &quot;child&quot;: {</span>
+<span class="sd">    ...         &quot;items&quot;: [&quot;INCOMING&quot;]</span>
+<span class="sd">    ...     },</span>
+<span class="sd">    ...     &quot;plain_field&quot;: &quot;INCOMING&quot;</span>
+<span class="sd">    ... })</span>
+
+<span class="sd">    &gt;&gt;&gt; parent.plain_field</span>
+<span class="sd">    &#39;DESERIALIZED INCOMING&#39;</span>
+
+<span class="sd">    &gt;&gt;&gt; parent.child.items[0]</span>
+<span class="sd">    &#39;DESERIALIZED INCOMING&#39;</span>
+
+<span class="sd">    When deserializing optional fields the missing values are set to None.</span>
+
+<span class="sd">    &gt;&gt;&gt; class Schema:</span>
+<span class="sd">    ...     field = AnyValue(required=False)</span>
+
+<span class="sd">    &gt;&gt;&gt; deserialize(Schema, {}).field</span>
+
+<span class="sd">    &quot;&quot;&quot;</span></div>
+    <span class="k">return</span> <span class="n">_wrap_schema</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Anton Berezin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+dict\_validator\.fields\.regexp package
+=======================================
+
+.. automodule:: dict_validator.fields.regexp
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Submodules
+----------
+
+.. automodule:: dict_validator.fields.regexp.camel_case_field
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: dict_validator.fields.regexp.email_field
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: dict_validator.fields.regexp.name_field
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: dict_validator.fields.regexp.pascal_case_field
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: dict_validator.fields.regexp.phone_field
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: dict_validator.fields.regexp.slug_field
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: dict_validator.fields.regexp.underscore_case_field
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: dict_validator.fields.regexp.url_field
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+

@@ -1,0 +1,49 @@
+dict\_validator\.fields package
+===============================
+
+.. automodule:: dict_validator.fields
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+    dict_validator.fields.regexp
+
+Submodules
+----------
+
+.. automodule:: dict_validator.fields.boolean_field
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: dict_validator.fields.choice_field
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: dict_validator.fields.number_field
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: dict_validator.fields.string_field
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: dict_validator.fields.timestamp_field
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: dict_validator.fields.wildcard_dict_field
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+

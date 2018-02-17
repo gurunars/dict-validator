@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dict_validator.fields.wildcard_dict_field &mdash; dict-validator  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="dict-validator  documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> dict-validator
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.0.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dict_validator.html">dict_validator package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dict-validator</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>dict_validator.fields.wildcard_dict_field</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for dict_validator.fields.wildcard_dict_field</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dict_validator</span> <span class="k">import</span> <span class="n">Field</span>
+
+
+<div class="viewcode-block" id="Any"><a class="viewcode-back" href="../../../dict_validator.fields.html#dict_validator.fields.Any">[docs]</a><span class="k">class</span> <span class="nc">Any</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Wildcard value. &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span></div>
+        <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="WildcardDict"><a class="viewcode-back" href="../../../dict_validator.fields.html#dict_validator.fields.WildcardDict">[docs]</a><span class="k">class</span> <span class="nc">WildcardDict</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Match a dict with any dict with any key/value pairs.</span>
+
+<span class="sd">    :param key_schema: Field subclass to be used to</span>
+<span class="sd">        validate/serialize/deserialize the keys. Optional. If undefined the</span>
+<span class="sd">        keys are accepted as is.</span>
+<span class="sd">    :param value_schema: Field subclass to be used to</span>
+<span class="sd">        validate/serialize/deserialize the values. Optional. If undefined the</span>
+<span class="sd">        values are accepted as is.</span>
+
+<span class="sd">    &gt;&gt;&gt; from dict_validator import validate, describe, serialize, deserialize</span>
+
+<span class="sd">    &gt;&gt;&gt; class Schema:</span>
+<span class="sd">    ...     field = WildcardDict()</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: {}}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: {&quot;key&quot;: &quot;value&quot;}}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: 11}))</span>
+<span class="sd">    [([&#39;field&#39;], &#39;Not a dict&#39;)]</span>
+
+<span class="sd">    &gt;&gt;&gt; from pprint import pprint</span>
+
+<span class="sd">    In field&#39;s description there are two special nodes: *{KEY}* and *{VALUE}*</span>
+<span class="sd">    that respectively correspond to the schemas applied to keys and values of</span>
+<span class="sd">    the payload.</span>
+
+<span class="sd">    &gt;&gt;&gt; pprint(list(describe(Schema)), width=70)</span>
+<span class="sd">    [([], {&#39;type&#39;: &#39;Dict&#39;}),</span>
+<span class="sd">     ([&#39;field&#39;], {&#39;type&#39;: &#39;WildcardDict&#39;}),</span>
+<span class="sd">     ([&#39;field&#39;, &#39;{KEY}&#39;], {&#39;type&#39;: &#39;Any&#39;}),</span>
+<span class="sd">     ([&#39;field&#39;, &#39;{VALUE}&#39;], {&#39;type&#39;: &#39;Any&#39;})]</span>
+
+<span class="sd">    If it is need it is possible to have validation for keys, values or both.</span>
+<span class="sd">    This can be achieved by defining respective schemas.</span>
+
+<span class="sd">    &gt;&gt;&gt; class SampleOnly(Field):</span>
+<span class="sd">    ...</span>
+<span class="sd">    ...     def _validate(self, value):</span>
+<span class="sd">    ...         if not value.startswith(&quot;sample&quot;):</span>
+<span class="sd">    ...             return &quot;Not a sample&quot;</span>
+<span class="sd">    ...</span>
+<span class="sd">    ...     def serialize(self, value):</span>
+<span class="sd">    ...         return value.lstrip(&quot;py(&quot;).rstrip(&quot;)&quot;)</span>
+<span class="sd">    ...</span>
+<span class="sd">    ...     def deserialize(self, value):</span>
+<span class="sd">    ...         return &quot;py(&quot; +  value + &quot;)&quot;</span>
+
+<span class="sd">    &gt;&gt;&gt; class Schema:</span>
+<span class="sd">    ...     field = WildcardDict(key_schema=SampleOnly(),</span>
+<span class="sd">    ...                          value_schema=SampleOnly())</span>
+
+<span class="sd">    &gt;&gt;&gt; pprint(list(describe(Schema)), width=70)</span>
+<span class="sd">    [([], {&#39;type&#39;: &#39;Dict&#39;}),</span>
+<span class="sd">     ([&#39;field&#39;], {&#39;type&#39;: &#39;WildcardDict&#39;}),</span>
+<span class="sd">     ([&#39;field&#39;, &#39;{KEY}&#39;], {&#39;type&#39;: &#39;SampleOnly&#39;}),</span>
+<span class="sd">     ([&#39;field&#39;, &#39;{VALUE}&#39;], {&#39;type&#39;: &#39;SampleOnly&#39;})]</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: {</span>
+<span class="sd">    ...     &quot;sample_field&quot;: &quot;sample_value&quot;</span>
+<span class="sd">    ... }}))</span>
+<span class="sd">    []</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: {</span>
+<span class="sd">    ...     &quot;foobar&quot;: &quot;sample_value&quot;</span>
+<span class="sd">    ... }}))</span>
+<span class="sd">    [([&#39;field&#39;, &#39;foobar&#39;], &#39;Key error: Not a sample&#39;)]</span>
+
+<span class="sd">    &gt;&gt;&gt; list(validate(Schema, {&quot;field&quot;: {</span>
+<span class="sd">    ...     &quot;sample_field&quot;: &quot;foobar&quot;</span>
+<span class="sd">    ... }}))</span>
+<span class="sd">    [([&#39;field&#39;, &#39;sample_field&#39;], &#39;Value error: Not a sample&#39;)]</span>
+
+<span class="sd">    &gt;&gt;&gt; from argparse import Namespace</span>
+
+<span class="sd">    &gt;&gt;&gt; serialize(Schema, Namespace(</span>
+<span class="sd">    ...     field={&quot;py(foobar)&quot;: &quot;py(sample_value)&quot;}</span>
+<span class="sd">    ... ))</span>
+<span class="sd">    {&#39;field&#39;: {&#39;foobar&#39;: &#39;sample_value&#39;}}</span>
+
+<span class="sd">    &gt;&gt;&gt; deserialize(Schema, {&quot;field&quot;: {&quot;foobar&quot;: &quot;sample_value&quot;}}).field</span>
+<span class="sd">    {&#39;py(foobar)&#39;: &#39;py(sample_value)&#39;}</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key_schema</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">value_schema</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">WildcardDict</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_key_schema</span> <span class="o">=</span> <span class="n">key_schema</span> <span class="ow">or</span> <span class="n">Any</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value_schema</span> <span class="o">=</span> <span class="n">value_schema</span> <span class="ow">or</span> <span class="n">Any</span><span class="p">()</span>
+
+<div class="viewcode-block" id="WildcardDict.describe"><a class="viewcode-back" href="../../../dict_validator.fields.html#dict_validator.fields.WildcardDict.describe">[docs]</a>    <span class="k">def</span> <span class="nf">describe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="nb">super</span><span class="p">(</span><span class="n">WildcardDict</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">():</span>
+            <span class="k">yield</span> <span class="n">result</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">child_path</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_key_schema</span><span class="o">.</span><span class="n">describe</span><span class="p">():</span>
+            <span class="k">yield</span> <span class="p">([</span><span class="s1">&#39;</span><span class="si">{KEY}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">child_path</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">child_path</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value_schema</span><span class="o">.</span><span class="n">describe</span><span class="p">():</span></div>
+            <span class="k">yield</span> <span class="p">([</span><span class="s1">&#39;</span><span class="si">{VALUE}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">child_path</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="s2">&quot;Not a dict&quot;</span>
+            <span class="k">return</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">payload</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">child_path</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_key_schema</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="p">([</span><span class="n">key</span><span class="p">]</span> <span class="o">+</span> <span class="n">child_path</span><span class="p">,</span> <span class="s2">&quot;Key error: &quot;</span> <span class="o">+</span> <span class="n">error</span><span class="p">)</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">child_path</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value_schema</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">payload</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="p">([</span><span class="n">key</span><span class="p">]</span> <span class="o">+</span> <span class="n">child_path</span><span class="p">,</span> <span class="s2">&quot;Value error: &quot;</span> <span class="o">+</span> <span class="n">error</span><span class="p">)</span>
+
+<div class="viewcode-block" id="WildcardDict.serialize"><a class="viewcode-back" href="../../../dict_validator.fields.html#dict_validator.fields.WildcardDict.serialize">[docs]</a>    <span class="k">def</span> <span class="nf">serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">ret_val</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">ret_val</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_key_schema</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_value_schema</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="n">val</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">ret_val</span>
+
+<div class="viewcode-block" id="WildcardDict.deserialize"><a class="viewcode-back" href="../../../dict_validator.fields.html#dict_validator.fields.WildcardDict.deserialize">[docs]</a>    <span class="k">def</span> <span class="nf">deserialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">ret_val</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">ret_val</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_key_schema</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_value_schema</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">val</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">ret_val</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Anton Berezin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

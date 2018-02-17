@@ -1,9 +1,9 @@
 name: dict-validator
 author: Anton Berezin
-author_email: gurunars@gmail.com
+author_email: anton.berezin@nephilim.solutions
 description: A library for structural data validation
 keywords: serialization validation
-url: https://gurunars.github.io/dict-validator
+url: https://nephilim-solutions.github.io/dict-validator
 license: Apache-2
 classifiers:
   - 'Development Status :: 5 - Production/Stable'
@@ -12,6 +12,6 @@ classifiers:
   - 'License :: OSI Approved :: Apache Software License'
   - 'Programming Language :: Python :: 3'
 project_urls:
-  Bug Tracker: 'https://github.com/gurunars/dict-validator/issues'
-  Documentation:  'https://gurunars.github.io/dict-validator'
-  Source Code: 'https://github.com/gurunars/dict-validator'
+  Bug Tracker: 'https://github.com/nephilim-solutions/dict-validator/issues'
+  Documentation:  'https://nephilim-solutions.github.io/dict-validator'
+  Source Code: 'https://github.com/nephilim-solutions/dict-validator'
